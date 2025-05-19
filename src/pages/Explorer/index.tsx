@@ -74,7 +74,7 @@ const SalaryExplorer = () => {
     const payload = {
       ...data,
       specialty: data.specialty_raw || "", 
-      practice:data.practiceSetting
+     ...(data.practiceSetting !== undefined && { practice: data.practiceSetting })
       
     };
 
