@@ -80,12 +80,12 @@ const BasicDetails = ({
   <p className="text-red-500 text-sm mt-1">{errors?.specialty?.message}</p>
 )} */}
 
-            {suggestions.length > 0 && (
+            {suggestions?.length > 0 && (
               <ul
                 className="absolute z-10 bg-white border w-full mt-1 rounded shadow text-sm max-h-60 overflow-auto"
                 role="listbox"
               >
-                {suggestions.map((item: any) => (
+                {suggestions?.map((item: any) => (
                   <li
                     key={item?._id}
                     onClick={() => {
@@ -156,7 +156,7 @@ const BasicDetails = ({
     </p>
   )} */}
 
-          {filteredStates.length > 0 && (
+          {filteredStates?.length > 0 && (
             <ul className="absolute z-10 bg-white border w-full mt-1 rounded shadow text-sm max-h-60 overflow-auto">
               {filteredStates.map((item) => (
                 <li
