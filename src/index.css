@@ -1,0 +1,43 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  margin: 0 auto;
+}
+
+@layer base {
+  h1 {
+    @apply text-[2em] font-bold my-[0.67em];
+  }
+  h2 {
+    @apply text-[1.5em] my-[0.75em];
+  }
+  h3 {
+    @apply text-[1.17em] font-bold my-[0.83em];
+  }
+  h4 {
+    @apply text-[1em] font-bold my-[1.12em];
+  }
+  h5 {
+    @apply text-[0.83em] font-bold my-[1.5em];
+  }
+  h6 {
+    @apply text-[0.67em] font-bold my-[1.67em];
+  }
+}
+
+/* .btn-primary {
+  @apply border border-blue text-blue flex flex-row gap-2 items-center justify-center px-3 py-1 md:px-6 md:py-2.5 uppercase text-xs rounded-md hover:bg-blue hover:text-white;
+}
+
+.container{
+  @apply px-8 md:px-16 py-5 md:py-10 mt-2
+} */
+
+.btn{
+  @apply py-4 px-8 text-white rounded-full w-auto max-w-[360px]
+}
