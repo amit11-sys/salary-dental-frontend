@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import SalaryViewer from "./pages/Salary";
 import SalaryExplorer from "./pages/Explorer";
 import AllSalary from "./pages/All";
+import BenchmarkDetails from "./pages/Benchmark";
 
 function App() {
   const location = useLocation();
@@ -25,7 +26,11 @@ function App() {
           <Route path="/*" element={<NoPage />} />
           <Route path="/submit-salary" element={<SalaryViewer />} />
           <Route path="/salaries" element={<SalaryExplorer />} />
-        <Route path="/all-salaries" element={<AllSalary />} />
+          <Route path="/all-salaries" element={<AllSalary />} />
+          <Route
+            path="/benchmark-residency-salaries-2025"
+            element={<BenchmarkDetails />}
+          />
         </Routes>
         {location.pathname === "/login" ||
           (location.pathname === "/register" ? "" : <Footer />)}

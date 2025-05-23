@@ -32,6 +32,16 @@ export const salaryViewerSchema = z.object({
   practiceSetting: z.optional(z.string()),
 });
 
+export const salaryBenchmarkSchema = z.object({
+  specialty: z.string().min(1, { message: "Please select a specialty" }),
+  // sub_speciality: z
+  //   .string()
+  //   .min(1, { message: "Please select a sub specialty" }),
+  // specialty_raw: z.string().min(1, { message: "Please select a specialty" }),
+  // state: z.optional(z.string()),
+  practiceSetting: z.optional(z.string()),
+});
+
 export const filterSalarySchema = z.object({
   specialty: z.string().min(1, { message: "Please select a specialty" }),
   sub_speciality: z
