@@ -16,12 +16,12 @@ const Header = () => {
           >
             Salary Explorer
           </a>
-          {/* <a
+          <a
             className="text-lg lg:text-xl font-semibold text-[#2D3748] whitespace-nowrap hover:text-blue-600 transition-colors"
-            href="/calculator"
+            href="/benchmark-residency-salaries-2025"
           >
-            Take Home Pay Calculator
-          </a> */}
+            Salary Benchmark
+          </a>
           {/* <a
             className="text-lg lg:text-xl font-semibold text-[#2D3748] whitespace-nowrap hover:text-blue-600 transition-colors"
             href="/feedback"
