@@ -1,4 +1,40 @@
+import { toast } from "react-toastify";
+import useAxios from "../../hooks/useAxios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 const SpecialityExplorer = () => {
+  const { request } = useAxios();
+  const { slug } = useParams();
+  const [stats, setStats] = useState(null);
+  useEffect(() => {
+    if (slug) {
+      onSubmit();
+    }
+  }, [slug]);
+  const onSubmit = () => {
+    if (!slug) return;
+    const payload = {
+      specialty: slug,
+    };
+
+    const queryParams = new URLSearchParams(payload)?.toString();
+    const url = `${
+      import.meta.env.VITE_BASE_URL
+    }salary/stats-by-speciality?${queryParams}`;
+
+    request(url, {
+      method: "GET",
+    })
+      .then((res: any) => {
+        setStats(res.data);
+      })
+      .catch(() => {
+        toast.error("Error occurred while fetching salary", {
+          autoClose: 3000,
+        });
+      });
+  };
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-4xl font-bold text-gray-900 mb-8">
@@ -404,14 +440,14 @@ const SpecialityExplorer = () => {
           Emergency Medicine Salary by State
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <a
-          className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
-          href="/specialty/emergency-medicine/alabama"
-        >
-          <h3 className="font-semibold text-gray-900">Alabama</h3>
-          <p className="text-gray-600">$360,000 year</p>
-          <p className="text-sm text-gray-500">4 reports</p>
-        </a>
+          <a
+            className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+            href="/specialty/emergency-medicine/alabama"
+          >
+            <h3 className="font-semibold text-gray-900">Alabama</h3>
+            <p className="text-gray-600">$360,000 year</p>
+            <p className="text-sm text-gray-500">4 reports</p>
+          </a>
         </div>
       </div>
 

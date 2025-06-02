@@ -28,7 +28,8 @@ function App() {
           <Route path="/submit-salary" element={<SalaryViewer />} />
           <Route path="/salaries" element={<SalaryExplorer />} />
           <Route path="/all-salaries" element={<AllSalary />} />
-          <Route path="/speciality" element={<SpecialityExplorer/>} />
+          <Route path="/specialty/:slug" element={<SpecialityExplorer />} />
+
           <Route
             path="/benchmark-residency-salaries-2025"
             element={<BenchmarkDetails />}

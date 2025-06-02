@@ -27,7 +27,6 @@ const BenchmarkDetails = () => {
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
   const formValues = useWatch({ control });
   const onSubmit = () => {
-    console.log(formValues);
 
     const payload = {
       ...(formValues?.speciality !== undefined && {
@@ -68,27 +67,11 @@ const BenchmarkDetails = () => {
     fetchSpecialities();
   }, []);
   const fetchSpecialities = () => {
-    // if (!query || query.length < 2) return;
-
-    // setLoading(true);
     const url = `${import.meta.env.VITE_BASE_URL}speciality/all`;
     request(url, {
       method: "GET",
     })
       .then((res) => {
-        // const specialties = [
-        //   {
-        //     key: 0,
-        //     name: "All Specialities",
-        //     value: "All",
-        //   },
-        //   ...Array.from(res?.data)?.map((spec: any) => ({
-        //     key: spec?._id,
-        //     name: spec?.speciality,
-        //     value: spec?.speciality,
-        //   })),
-        // ];
-        // setSpecialities(specialties);
         const specialtiesSet = new Set(
           res?.data?.map((item: any) => item?.speciality).filter(Boolean)
         );
@@ -129,7 +112,7 @@ const BenchmarkDetails = () => {
       }
     });
   };
-  console.log(selectedItems);
+  // console.log(selectedItems);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

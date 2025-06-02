@@ -87,7 +87,7 @@ const SalaryExplorer = () => {
       method: "GET",
     })
       .then((res: any) => {
-        console.log("Salary fetched:", res);
+        // console.log("Salary fetched:", res);
         setSalaryData(res?.data?.data);
         setPracticeData(res?.data?.summary);
         setOverallSummary(res?.data?.overallSummary);
