@@ -8,6 +8,7 @@ import SalaryViewer from "./pages/Salary";
 import SalaryExplorer from "./pages/Explorer";
 import AllSalary from "./pages/All";
 import BenchmarkDetails from "./pages/Benchmark";
+import SpecialityExplorer from "./pages/SpecialityExplorer";
 
 function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
           <Route path="/submit-salary" element={<SalaryViewer />} />
           <Route path="/salaries" element={<SalaryExplorer />} />
           <Route path="/all-salaries" element={<AllSalary />} />
+          <Route path="/speciality" element={<SpecialityExplorer/>} />
           <Route
             path="/benchmark-residency-salaries-2025"
             element={<BenchmarkDetails />}
