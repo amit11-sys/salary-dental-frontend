@@ -1,12 +1,12 @@
 import { toast } from "react-toastify";
 import useAxios from "../../hooks/useAxios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const SpecialityExplorer = () => {
   const { request } = useAxios();
   const { slug } = useParams();
-  const [stats, setStats] = useState(null);
+  // const [stats, setStats] = useState(null);
   useEffect(() => {
     if (slug) {
       onSubmit();
@@ -27,7 +27,9 @@ const SpecialityExplorer = () => {
       method: "GET",
     })
       .then((res: any) => {
-        setStats(res.data);
+        // setStats(res.data);
+        console.log(res);
+        
       })
       .catch(() => {
         toast.error("Error occurred while fetching salary", {
