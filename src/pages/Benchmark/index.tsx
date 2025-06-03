@@ -849,31 +849,31 @@ const BenchmarkDetails = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <a
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/emergency-medicine"
+            href="/specialty/EmergencyMedicine"
           >
             Emergency Medicine Physician Salary
           </a>
           <a
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/family-medicine"
+            href="/specialty/FamilyMedicine"
           >
             Family Medicine Physician Salary
           </a>
           <a
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/internal-medicine"
+            href="/specialty/InternalMedicine"
           >
             Internal Medicine Physician Salary
           </a>
           <a
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/cardiology"
+            href="/specialty/Cardiology"
           >
             Cardiology Physician Salary
           </a>
           <a
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/orthopedic-surgery"
+            href="/specialty/OrthopedicSurgery"
           >
             Orthopedic Surgeon Salary
           </a>
