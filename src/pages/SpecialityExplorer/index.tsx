@@ -1,17 +1,23 @@
 import { toast } from "react-toastify";
 import useAxios from "../../hooks/useAxios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import StarRating from "../../components/StarRating";
+import StateCard from "../../components/cards/StateCard";
 
 const SpecialityExplorer = () => {
   const { request } = useAxios();
   const { slug } = useParams();
-  // const [stats, setStats] = useState(null);
+  const [stats, setStats] = useState<any>([]);
+  const [downStats, setDownStats] = useState<any>([]);
   useEffect(() => {
     if (slug) {
       onSubmit();
+      getDownData();
     }
   }, [slug]);
+  // console.log(stats);
+
   const onSubmit = () => {
     if (!slug) return;
     const payload = {
@@ -27,9 +33,8 @@ const SpecialityExplorer = () => {
       method: "GET",
     })
       .then((res: any) => {
-        // setStats(res.data);
-        console.log(res);
-        
+        setStats(res.data[0]);
+        // console.log(res);
       })
       .catch(() => {
         toast.error("Error occurred while fetching salary", {
@@ -37,11 +42,54 @@ const SpecialityExplorer = () => {
         });
       });
   };
+
+  const getDownData = () => {
+    if (!slug) return;
+    const payload = {
+      specialty: slug,
+    };
+
+    const queryParams = new URLSearchParams(payload)?.toString();
+    const url = `${
+      import.meta.env.VITE_BASE_URL
+    }salary/speciality-insights?${queryParams}`;
+
+    request(url, {
+      method: "GET",
+    })
+      .then((res: any) => {
+        setDownStats(res.data);
+        // console.log(res);
+      })
+      .catch(() => {
+        toast.error("Error occurred while fetching salary", {
+          autoClose: 3000,
+        });
+      });
+  };
+  console.log(stats);
+  // console.log(downStats);
+
+  function insertSpaceBeforeSecondCapital(str: string | undefined) {
+    if (str === undefined) return;
+    let match = str?.match(/[A-Z]/g);
+    if (!match || match.length < 2) return str;
+
+    let count = 0;
+    return str?.replace(/[A-Z]/g, (char: any) => {
+      count++;
+      if (count === 2) return " " + char;
+      return char;
+    });
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-4xl font-bold text-gray-900 mb-8">
-        Emergency Medicine Salary Data
+        {insertSpaceBeforeSecondCapital(slug)} Salary Data
       </h1>
+      {stats?.length>0 ?
+      <>
       <div className="bg-white rounded-xl p-4 md:p-8 mb-8 md:mb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           <div className="col-span-1 md:col-span-2 lg:col-span-3 mb-4">
@@ -51,7 +99,7 @@ const SpecialityExplorer = () => {
                   Median Salary
                 </h3>
                 <p className="text-3xl md:text-4xl font-bold text-gray-900">
-                  $410,000
+                  ${stats?.medianSalary}
                 </p>
               </div>
               <div>
@@ -59,12 +107,12 @@ const SpecialityExplorer = () => {
                   Average Salary
                 </h3>
                 <p className="text-2xl md:text-3xl font-semibold text-gray-800">
-                  $415,482
+                  ${stats?.avgSalary}
                 </p>
               </div>
             </div>
             <div className="mt-4 text-sm text-gray-600 bg-gray-50 inline-block px-3 py-1.5 rounded-lg">
-              Based on 74 physician salaries
+              Based on {stats?.totalSubmissions} physician salaries
             </div>
           </div>
           <div className="bg-gray-50 rounded-lg p-4">
@@ -74,11 +122,11 @@ const SpecialityExplorer = () => {
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">Minimum</span>
-                <span className="font-medium text-gray-900">$375,000</span>
+                <span className="font-medium text-gray-900"> ${stats?.avgSalary}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-600">Maximum</span>
-                <span className="font-medium text-gray-900">$700,000</span>
+                <span className="font-medium text-gray-900">${stats?.medianSalary}</span>
               </div>
             </div>
           </div>
@@ -117,21 +165,21 @@ const SpecialityExplorer = () => {
 
       <div className="prose max-w-none mb-12 bg-white rounded-xl p-8">
         <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-          How much does an Emergency Medicine make?
+          How much does an {insertSpaceBeforeSecondCapital(slug)} make?
         </h2>
         <div className="space-y-6 text-gray-600">
           <div className="flex items-center gap-4">
             <p className="text-lg">
-              As of May 27, 2025, an Emergency Medicine in the United States
-              earns an average of $410,000 per year ($34,167 monthly). Based on
-              an average 36-hour work week, this translates to approximately
-              $222 per hour.
+              As of May 27, 2025, an {insertSpaceBeforeSecondCapital(slug)} in
+              the United States earns an average of $410,000 per year ($34,167
+              monthly). Based on an average 36-hour work week, this translates
+              to approximately $222 per hour.
             </p>
             <div className="hidden md:flex items-center justify-center px-4 py-2 bg-gray-100 rounded-lg">
               <div className="text-center">
                 <div className="text-sm text-gray-500">Based on</div>
                 <div className="text-lg font-semibold text-gray-900">
-                  74 salaries
+                  {stats?.totalSubmissions} salaries
                 </div>
               </div>
             </div>
@@ -140,11 +188,12 @@ const SpecialityExplorer = () => {
             Salary Range and Distribution
           </h3>
           <p className="text-lg">
-            Based on 74 verified physician salary submissions, SalaryDr is
-            seeing total compensation ranging from $375,000 to $440,000, with
-            top performers (90th percentile) earning up to 700,000 annually. The
-            majority of Emergency Medicine salaries fall between $375,000 (25th
-            percentile) and $440,000 (75th percentile).
+            Based on {stats?.totalSubmissions} verified physician salary
+            submissions, SalaryDr is seeing total compensation ranging from
+            $375,000 to $440,000, with top performers (90th percentile) earning
+            up to 700,000 annually. The majority of{" "}
+            {insertSpaceBeforeSecondCapital(slug)} salaries fall between
+            $375,000 (25th percentile) and $440,000 (75th percentile).
           </p>
           <h3 className="text-xl font-semibold text-gray-900 mt-8">
             Career Growth and Advancement
@@ -167,9 +216,9 @@ const SpecialityExplorer = () => {
             Job Satisfaction and Work-Life Balance
           </h3>
           <p className="text-lg">
-            Emergency Medicine physicians report high career satisfaction,
-            rating their specialty 3.6 out of 5, with 89% saying they would
-            choose this specialty again.{" "}
+            {insertSpaceBeforeSecondCapital(slug)} physicians report high career
+            satisfaction, rating their specialty 3.6 out of 5, with 89% saying
+            they would choose this specialty again.{" "}
           </p>
         </div>
       </div>
@@ -190,11 +239,14 @@ const SpecialityExplorer = () => {
                   style={{ width: "89.1891891891892%" }}
                 ></div>
               </div>
-              <span className="text-xl font-bold text-blue-600">89%</span>
+              <span className="text-xl font-bold text-blue-600">
+                {stats?.satisfactionPercentage}%
+              </span>
             </div>
             <p className="mt-2 text-sm text-gray-600">
-              Percentage of Emergency Medicine physicians who would choose this
-              specialty again if starting their career over.
+              Percentage of {insertSpaceBeforeSecondCapital(slug)} physicians
+              who would choose this specialty again if starting their career
+              over.
             </p>
           </div>
           <div>
@@ -203,7 +255,7 @@ const SpecialityExplorer = () => {
             </h3>
             <div className="flex items-center gap-2 mb-2">
               <div className="flex">
-                <svg
+                {/* <svg
                   className="w-6 h-6 text-yellow-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -246,12 +298,14 @@ const SpecialityExplorer = () => {
                   viewBox="0 0 20 20"
                 >
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                </svg>
+                </svg> */}
+                <StarRating rating={stats?.avgSatisfactionRating} />
               </div>
-              <span className="text-xl font-bold text-blue-600">3.6/5</span>
+              {/* <span className="text-xl font-bold text-blue-600">3.6/5</span> */}
             </div>
             <p className="text-sm text-gray-600">
-              Average satisfaction rating reported by Emergency Medicine
+              Average satisfaction rating reported by{" "}
+              {insertSpaceBeforeSecondCapital(slug)}
               physicians (1-5 scale).
             </p>
           </div>
@@ -290,15 +344,15 @@ const SpecialityExplorer = () => {
             <div className="space-y-4">
               <div>
                 <p className="text-sm text-gray-600">Average Salary</p>
-                <p className="text-2xl font-bold text-gray-900">$415,482</p>
+                <p className="text-2xl font-bold text-gray-900"> ${stats?.avgSalary}</p>
               </div>
               <div>
                 <p className="text-sm text-gray-600">Median Salary</p>
-                <p className="text-2xl font-bold text-gray-900">$410,000</p>
+                <p className="text-2xl font-bold text-gray-900">${stats?.medianSalary}</p>
               </div>
               <div>
                 <p className="text-sm text-gray-600">Salary Range</p>
-                <p className="text-lg text-gray-800">$375,000 - $440,000</p>
+                <p className="text-lg text-gray-800">${stats?.avgSalary} - ${stats?.medianSalary}</p>
               </div>
             </div>
           </div>
@@ -309,7 +363,7 @@ const SpecialityExplorer = () => {
             <div className="space-y-4">
               <div>
                 <p className="text-sm text-gray-600">National Average</p>
-                <p className="text-2xl font-bold text-gray-900">$415,482</p>
+                <p className="text-2xl font-bold text-gray-900"> ${stats?.avgSalary}</p>
               </div>
               <div>
                 <p className="text-sm text-gray-600">Difference</p>
@@ -320,7 +374,7 @@ const SpecialityExplorer = () => {
               <div>
                 <p className="text-sm text-gray-600">Sample Size</p>
                 <p className="text-lg text-gray-800">
-                  74 local / 74 national reports
+                  {stats?.totalSubmissions} local / {stats?.totalSubmissions} national reports
                 </p>
               </div>
             </div>
@@ -392,19 +446,31 @@ const SpecialityExplorer = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              <tr className="bg-white">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  Private Practice
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  $488,583
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  12 submissions
-                </td>
-              </tr>
-              <tr className="bg-gray-50">
+           
+              {Array.isArray(downStats?.reportsByPractice) &&
+                downStats?.reportsByPractice?.length > 0 &&
+                downStats?.reportsByPractice?.map(
+                  (item: any, index: number) => (
+                    <tbody
+                      key={index}
+                      className="bg-white divide-y divide-gray-200"
+                    >
+                      <tr className="bg-white">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                          {item?.practiceSetting}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          ${item?.avgYearSalary}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                          {item?.totalSubmissions} submissions
+                        </td>
+                      </tr>
+                    </tbody>
+                  )
+                )}
+
+              {/* <tr className="bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   Hospital-employed
                 </td>
@@ -425,8 +491,8 @@ const SpecialityExplorer = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   11 submissions
                 </td>
-              </tr>
-            </tbody>
+              </tr> */}
+            {/* </tbody> */}
           </table>
         </div>
         <div className="mt-4 text-sm text-gray-500">
@@ -439,17 +505,31 @@ const SpecialityExplorer = () => {
 
       <div className="bg-white rounded-xl p-8 mb-12">
         <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-          Emergency Medicine Salary by State
+          {insertSpaceBeforeSecondCapital(slug)} Salary by State
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <a
+          {Array.isArray(downStats?.reportsByState) &&
+            downStats?.reportsByState?.length > 0 &&
+            downStats?.reportsByState?.map((item: any, index: number) => (
+              <div
+                key={index}
+                className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+              >
+                <StateCard
+                  state={item?.state}
+                  salary={item?.avgYearSalary}
+                  submission={item?.totalSubmissions}
+                />
+              </div>
+            ))}
+          {/* <a
             className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
             href="/specialty/emergency-medicine/alabama"
           >
             <h3 className="font-semibold text-gray-900">Alabama</h3>
             <p className="text-gray-600">$360,000 year</p>
             <p className="text-sm text-gray-500">4 reports</p>
-          </a>
+          </a> */}
         </div>
       </div>
 
@@ -469,6 +549,7 @@ const SpecialityExplorer = () => {
           View Residency Benchmarks
         </a>
       </div>
+      </> :      <div className="bg-white rounded-xl p-4 md:p-8 mb-8 md:mb-12">No data found for this speciality</div>}
     </div>
   );
 };
