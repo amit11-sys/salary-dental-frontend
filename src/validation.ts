@@ -4,14 +4,14 @@ export const salarySchema = z.object({
   sub_speciality: z.optional(z.string()),
   state: z.string().min(1, { message: "State is required" }),
   city: z.optional(z.string()),
-  rating: z.number().min(1, { message: "Please select a rating" }),
+  // rating: z.number().min(1, { message: "Please select a rating" }),
   yearsOfExperience: z
     .number()
     .min(1, "Must have at least 1 year of experience")
     .max(40, "Cannot exceed 40 years of experience"),
   practiceSetting: z.string().min(1, { message: "It is a required field" }),
-  base_salary: z.number().min(1, { message: "It is a required field" }),
-  bonus: z.number().min(1, { message: "It is a required field" }),
+  base_salary: z.optional(z.number()),
+  bonus: z.optional(z.number()),
   hoursWorked: z.number().min(1, { message: "It is a required field" }),
   ptoWeeks: z.number().min(1, { message: "It is a required field" }),
   satisfactionLevel: z.number().min(1, { message: "It is a required field" }),
@@ -20,6 +20,9 @@ export const salarySchema = z.object({
   }),
   email: z.string().email(),
   specialty_raw: z.string().min(1, { message: "Please select a specialty" }),
+  insight1:z.optional(z.string()),
+  insight2:z.optional(z.string()),
+  prod_per:z.optional(z.string())
 });
 
 export const salaryViewerSchema = z.object({
