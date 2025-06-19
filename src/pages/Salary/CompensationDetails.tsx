@@ -1,63 +1,128 @@
 import CustomDropdown from "../../components/Dropdown";
-import { practiceOptions } from "../../lib/constant";
+import { compensationType, practiceOptions } from "../../lib/constant";
 
-const CompensationDetails = ({ setValue, register, step, setStep }: any) => {
+
+
+const CompensationDetails = ({ setValue, register, step, setStep, trigger, errors }: any) => {
+    const handleNext = async () => {
+    const isValid = await trigger(["practiceSetting", "compensationType"]);
+
+    if (isValid) {
+      setStep(step + 1);
+    }
+  };
   return (
-    <div className="space-y-5">
+  <main className="container mx-auto px-4 py-8">
+      <div className="max-w-2xl mx-auto">
+        <div className="rounded-lg p-6">
+        <div className="space-y-5">
+         <div className="text-center mb-5">
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">
+              Practice & Compensation
+            </h2>
+            <p className="text-gray-600">
+              Tell us about your work setting and salary
+            </p>
+          </div>
       <div>
-        <label className="block text-base font-semibold text-blue-600 mb-1.5">
-          Practice Setting (Required)
+        <label className="block text-sm font-semibold text-gray-900 mb-2">
+          Practice Setting <span className="text-red-500">*</span>
         </label>
         <CustomDropdown
           setValue={setValue}
           options={practiceOptions}
-          placeholder={"Select Practice"}
+          placeholder={"Select your practice setting"}
           fieldName="practiceSetting"
         />
+         {errors.practiceSetting && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors?.practiceSetting?.message}
+                </p>
+              )}
       </div>
-      <div>
-        <label className="block text-base font-semibold text-blue-600 mb-1.5">
-          Base Salary (Annual) (Required)
+      <div className="space-y-2">
+        <label className="block text-sm font-semibold text-gray-900">
+          Compensation Type <span className="text-red-500">*</span>
+        </label>
+        {/* <select
+          name="compensationType"
+          className="w-full p-3 border-2 rounded-xl text-base transition-all duration-200 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 border-gray-200 hover:border-gray-300"
+          required
+        >
+          <option value="">Select compensation type</option>
+          <option value="annual">Annual</option>
+          <option value="hourly">Hourly</option>
+        </select> */}
+          <CustomDropdown
+          setValue={setValue}
+          options={compensationType}
+          placeholder={"Select compensation type"}
+          fieldName="compensationType"
+        />
+      </div>
+      <div className="space-y-2">
+        <label className="block text-sm font-semibold text-gray-900 mb-2">
+          Annual Base Salary
         </label>
         <div className="relative">
-          <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
+        <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
             $
           </span>
-          <input
-            placeholder="Enter base salary"
-            className="w-full p-2.5 pl-8 border rounded-lg text-sm "
-            type="text"
-            {...register("base_salary", {valueAsNumber:true})}
-          />
+        <input
+          placeholder="Enter base salary"
+          className="w-full pl-6 pr-2 py-3 border-2 rounded-xl text-base transition-all duration-200 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 border-gray-200 hover:border-gray-300 "
+          type="text"
+          {...register("base_salary", { valueAsNumber: true })}
+        />
         </div>
       </div>
-      <div>
-        <label className="block text-base font-semibold text-blue-600 mb-1.5">
-          Bonus/Incentives/RVUs (Annual) (Optional)
+      <div className="space-y-2">
+        <label className="block text-sm font-semibold text-gray-900 mb-2">
+          Bonus (Optional)
         </label>
         <div className="relative">
-          <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
+        <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
             $
           </span>
-          <input
-            placeholder="Enter bonus/incentives"
-            className="w-full p-2.5 pl-8 border rounded-lg text-sm "
-            type="text"
-            {...register("bonus", {valueAsNumber:true})}
-          />
+        <input
+          placeholder="Enter bonus/incentives"
+          className="w-full pl-6 pr-2 py-3 border-2 rounded-xl text-base transition-all duration-200 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 border-gray-200 hover:border-gray-300 "
+          type="text"
+          {...register("bonus", { valueAsNumber: true })}
+        />
         </div>
       </div>
-      <div className="flex justify-between mt-6">
-        <button type="button" className="px-4 py-1.5 bg-gray-500 text-white rounded-md text-sm" onClick={()=>setStep(step-1)}>← Back</button>
+       <div className="space-y-2">
+        <label className="block text-sm font-semibold text-gray-900 mb-2">
+          Production Percentage (Optional)
+        </label>
+        <input
+          placeholder="Enter percentage"
+          className="w-full pl-6 pr-2 py-3 border-2 rounded-xl text-base transition-all duration-200 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 border-gray-200 hover:border-gray-300 "
+          type="text"
+          {...register("prod_per")}
+        />
+      </div>
+      <div className="flex justify-between mt-6 space-y-2">
         <button
           type="button"
-          className="px-4 py-3 bg-blue-600 text-white rounded-lg text-sm font-medium"
-          onClick={()=>setStep(step+1)}
+          className="w-full sm:w-auto px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-medium transition-all duration-200 flex items-center justify-center"
+          onClick={() => setStep(step - 1)}
+        >
+          ← Back
+        </button>
+        <button
+          type="button"
+          className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl"
+          onClick={handleNext}
         >
           Next : Workload & Contact →
         </button>
       </div>
+      </div>
+      </div>
     </div>
+    </main>
   );
 };
 

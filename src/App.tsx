@@ -9,6 +9,7 @@ import SalaryExplorer from "./pages/Explorer";
 import AllSalary from "./pages/All";
 import BenchmarkDetails from "./pages/Benchmark";
 import SpecialityExplorer from "./pages/SpecialityExplorer";
+import Thankyou from "./pages/ThankYou/page";
 
 function App() {
   const location = useLocation();
@@ -34,11 +35,16 @@ function App() {
             path="/benchmark-residency-salaries-2025"
             element={<BenchmarkDetails />}
           />
+             <Route
+            path="/thank-you"
+            element={<Thankyou />}
+          />
         </Routes>
         {location.pathname === "/login" ||
           (location.pathname === "/register" ? "" : <Footer />)}
       </div>
     </div>
+
   );
 }
 
