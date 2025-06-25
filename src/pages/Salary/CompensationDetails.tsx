@@ -12,9 +12,9 @@ const CompensationDetails = ({ setValue, register, step, setStep, trigger, error
     }
   };
   return (
-  <main className="container mx-auto px-4 py-8">
-      <div className="max-w-2xl mx-auto">
-        <div className="rounded-lg p-6">
+  <main className="container mx-auto md:px-4 md:py-8">
+      <div className="max-w-2xl  mx-auto">
+        <div className=" bg-white my-9 shadow-lg rounded-2xl p-6">
         <div className="space-y-5">
          <div className="text-center mb-5">
             <h2 className="text-xl font-semibold text-gray-900 mb-2">
@@ -103,7 +103,7 @@ const CompensationDetails = ({ setValue, register, step, setStep, trigger, error
           {...register("prod_per")}
         />
       </div>
-      <div className="flex justify-between mt-6 space-y-2">
+      <div className="flex md:flex-row gap-3 flex-col justify-between mt-6 space-y-2">
         <button
           type="button"
           className="w-full sm:w-auto px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-medium transition-all duration-200 flex items-center justify-center"

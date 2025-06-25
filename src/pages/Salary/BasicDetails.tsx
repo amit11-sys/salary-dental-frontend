@@ -307,7 +307,7 @@ const BasicDetails = ({
             )}
           </div>
         </div>
-        <div className="flex justify-center mt-6">
+        <div className="flex  justify-center mt-6">
           <button
             type="button"
             className="w-full sm:w-auto px-5 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl font-semibold transition-all duration-200 flex items-center justify-center shadow-lg hover:shadow-xl"
