@@ -405,7 +405,7 @@ const Workload = ({
               Required for account creation and to receive salary insights
             </p>
           </div>
-          <div className="flex justify-between mt-6">
+          <div className="flex md:flex-row flex-col gap-3 justify-between mt-6">
             <button
               type="button"
               className="w-full sm:w-auto px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-medium transition-all duration-200 flex items-center justify-center"

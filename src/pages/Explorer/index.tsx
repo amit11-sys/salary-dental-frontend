@@ -127,15 +127,15 @@ const SalaryExplorer = () => {
     setFilteredStates([]);
   };
   return (
-    <main className="container mx-auto px-4 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main className="container mx-auto md:px-4 md:py-8">
+      <div className="max-w-7xl mx-auto px-0 md:px-4 lg:px-8 py-8">
         <header className="mb-6 mt-4">
           <div className="bg-white shadow-md rounded-lg p-6">
             <h1 className="text-3xl font-bold text-gray-900">
-              Physician Salary Explorer
+              Dental Salary Explorer
             </h1>
             <p className="text-gray-600 mt-2 mb-6">
-              Explore real physician salary data by specialty, location, and
+              Explore real dental salary data by specialty, location, and
               practice type. Updated daily with anonymous submissions from
               verified physicians.
             </p>
@@ -515,7 +515,7 @@ const SalaryExplorer = () => {
                   </div>
                 </div>
               </div>
-              <div className="md:hidden px-0 pb-12 space-y-2">
+              {/* <div className="md:hidden px-0 pb-12 space-y-2">
                 <div className="sticky top-0 z-10 bg-white px-4 py-3 border-b border-gray-200 shadow-sm">
                   <div className="flex flex-col space-y-3">
                     <h2 className="text-lg font-bold text-gray-900">
@@ -957,7 +957,7 @@ const SalaryExplorer = () => {
                     </svg>
                   </a>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="lg:col-span-1 space-y-6">

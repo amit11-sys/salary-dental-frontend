@@ -6,11 +6,11 @@ import Accordion from "../../components/Accordian";
 const Home = () => {
   return (
     <>
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto md:px-4 md:py-8">
         <section>
           <div className="text-center">
             <h1 className="bg-gradient-to-r from-blue-700 to-purple-900 bg-clip-text text-transparent will-change-transform [contain:layout_paint_style] px-2 leading-tight text-[4.5rem]">
-              Compare Real Physician Salaries Across All Specialties
+              Compare Real Dentists Salaries Across All Specialties
             </h1>
             <div className="flex flex-col gap-4 p-6 text-gray-700">
               <h2 className="flex flex-wrap items-center justify-center text-2xl m-0">
@@ -78,12 +78,30 @@ const Home = () => {
             <p className="font-medium text-blue-900">Cardiology</p>
             <p className="text-sm text-blue-600">View Salaries →</p>
           </div> */}
-                <PopularCard title="Cardiology" link="/salaries?speciality=cardiology" />
-                <PopularCard title="Orthopedic Surgery" link="/salaries?speciality=orthopedic-surgery" />
-                <PopularCard title="Family Medicine" link="/salaries?speciality=family-medicine" />
-                <PopularCard title="Emergency Medicine" link="/salaries?speciality=emergency-medicine" />
-                <PopularCard title="Internal Medicine" link="/salaries?speciality=internal-medicine" />
-                <PopularCard title="Anesthesiology" link="/salaries?speciality=Anesthesiology" />
+                <PopularCard
+                  title="Oral and Maxillofacial Surgery"
+                  link="/salaries?speciality=oral-and-maxillofacial-surgery "
+                />
+                <PopularCard
+                  title="Orthodontics and Dentofacial Orthopedics"
+                  link="/salaries?speciality=orthodontics-and-dentofacial-orthopedics "
+                />
+                <PopularCard
+                  title="Pediatric Dentistry"
+                  link="/salaries?speciality=pediatric-dentistry "
+                />
+                <PopularCard
+                  title="Endodontics"
+                  link="/salaries?speciality=endodontics "
+                />
+                <PopularCard
+                  title="Periodontics"
+                  link="/salaries?speciality=periodontics "
+                />
+                <PopularCard
+                  title="Prosthodontics"
+                  link="/salaries?speciality=prosthodontics "
+                />
               </div>
             </div>
           </div>

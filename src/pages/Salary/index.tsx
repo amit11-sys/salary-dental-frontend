@@ -25,20 +25,36 @@ const SalaryViewer = () => {
   });
   const { request } = useAxios();
   const navigate = useNavigate();
-  const formValues=getValues()
+  const formValues = getValues();
   const [step, setStep] = useState(1);
   const progressPercent = (step / totalSteps) * 100;
-console.log(errors);
+  console.log(errors);
 
   const onSubmit = (data: any) => {
     const url = `${import.meta.env.VITE_BASE_URL}salary/submit-salary`;
 
     const payload = {
-      ...data,
-      specialty: data.specialty_raw || "", // replace specialty with specialty_raw
+      // ...data,
+      annual_base_salary: data?.base_salary,
+      average_hours_per_week: data?.hoursWorked,
+      bonus: data?.bonus,
+      city: data?.city,
+      job_satisfaction_level: data?.satisfactionLevel,
+      paid_time_off_weeks: data?.ptoWeeks,
+      practice_setting: data?.practiceSetting,
+      production_percentage: data?.prod_per,
+      specialty: data?.specialty_raw,
+      state: data?.state,
+      insights_improvement: data?.insight1,
+      insights_work_life_balance: data?.insight2,
+      would_choose_specialty_again  : data?.chooseSpecialty,
+      
+      years_of_experience: data?.yearsOfExperience,
+      // compensation_type  :data?,
+      // specialty: data.specialty_raw || "", // replace specialty with specialty_raw
     };
 
-    delete payload.specialty_raw;
+    // delete payload.specialty_raw;
 
     request(url, {
       method: "POST",
@@ -64,7 +80,7 @@ console.log(errors);
   // console.log(errors);
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <main className="container mx-auto md:px-4 md:py-8">
       <div className="max-w-2xl mx-auto">
         <div className="rounded-lg p-6">
           {/* <div className="text-center mb-6">
@@ -120,9 +136,17 @@ console.log(errors);
               Help improve salary transparency in medicine 🚀
             </p>
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl px-4 mb-6 max-w-2xl mx-auto">
-              <div className={`flex ${isOpen ? "items-start" : "items-center"} space-x-3`}>
+              <div
+                className={`flex ${
+                  isOpen ? "items-start" : "items-center"
+                } space-x-3`}
+              >
                 <div className="flex-shrink-0">
-                  <div className={`w-8 h-8 ${isOpen ? "mt-3" : "mt-0"} bg-green-100 rounded-full flex items-center justify-center`}>
+                  <div
+                    className={`w-8 h-8 ${
+                      isOpen ? "mt-3" : "mt-0"
+                    } bg-green-100 rounded-full flex items-center justify-center`}
+                  >
                     <svg
                       className="w-5 h-5 text-green-600"
                       fill="none"
@@ -167,7 +191,38 @@ console.log(errors);
                   </button>
 
                   {isOpen && (
-                    <div><p className="text-green-800 text-sm leading-relaxed">We're building the largest <strong>free and open database</strong> of physician compensation. Unlike expensive industry reports, our data will <strong>always be accessible to every physician </strong>at no cost. Your contribution helps level the playing field and empowers all doctors with transparent compensation.</p><div className="mt-3 flex justify-center"><div className="flex items-start text-xs text-green-700 pb-2"><svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span className="font-medium">100% Free Forever • No Paywalls • Open Access</span></div></div></div>
+                    <div>
+                      <p className="text-green-800 text-sm leading-relaxed">
+                        We're building the largest{" "}
+                        <strong>free and open database</strong> of physician
+                        compensation. Unlike expensive industry reports, our
+                        data will{" "}
+                        <strong>
+                          always be accessible to every physician{" "}
+                        </strong>
+                        at no cost. Your contribution helps level the playing
+                        field and empowers all doctors with transparent
+                        compensation.
+                      </p>
+                      <div className="mt-3 flex justify-center">
+                        <div className="flex items-start text-xs text-green-700 pb-2">
+                          <svg
+                            className="w-4 h-4 mr-1"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                              clip-rule="evenodd"
+                            ></path>
+                          </svg>
+                          <span className="font-medium">
+                            100% Free Forever • No Paywalls • Open Access
+                          </span>
+                        </div>
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>
