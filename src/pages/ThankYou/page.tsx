@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Thankyou = () => {
   return (
     <div className="max-w-3xl mx-auto">
@@ -169,12 +171,12 @@ const Thankyou = () => {
             </div>
           </div> */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-            <a
+            <Link
               className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition duration-200 font-medium"
-              href="/salaries"
+              to="/salaries"
             >
               View Salary Dashboard
-            </a>
+            </Link>
             {/* <button className="inline-block bg-gray-200 hover:bg-gray-300 text-gray-700 px-6 py-3 rounded-lg transition duration-200 font-medium">
               Skip for Now
             </button> */}
