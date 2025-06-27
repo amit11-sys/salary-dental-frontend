@@ -15,14 +15,15 @@ export const salarySchema = z.object({
   hoursWorked: z.number().min(1, { message: "It is a required field" }),
   ptoWeeks: z.number().min(1, { message: "It is a required field" }),
   satisfactionLevel: z.number().min(1, { message: "It is a required field" }),
+  compensationType: z.string().min(1, { message: "Required" }),
   chooseSpecialty: z.enum(["yes", "no"], {
     required_error: "Please select an option",
   }),
   email: z.string().email(),
   specialty_raw: z.string().min(1, { message: "Please select a specialty" }),
-  insight1:z.optional(z.string()),
-  insight2:z.optional(z.string()),
-  prod_per:z.optional(z.string())
+  insight1: z.optional(z.string()),
+  insight2: z.optional(z.string()),
+  prod_per: z.optional(z.string()),
 });
 
 export const salaryViewerSchema = z.object({

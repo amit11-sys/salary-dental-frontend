@@ -31,17 +31,20 @@ const SalaryViewer = () => {
   console.log(errors);
 
   const onSubmit = (data: any) => {
+    console.log(data);
+    // return
+    
     const url = `${import.meta.env.VITE_BASE_URL}salary/submit-salary`;
 
     const payload = {
       // ...data,
-      annual_base_salary: data?.base_salary,
-      average_hours_per_week: data?.hoursWorked,
+      base_salary: data?.base_salary,
+      hoursWorked: data?.hoursWorked,
       bonus: data?.bonus,
       city: data?.city,
-      job_satisfaction_level: data?.satisfactionLevel,
-      paid_time_off_weeks: data?.ptoWeeks,
-      practice_setting: data?.practiceSetting,
+      satisfactionLevel: data?.satisfactionLevel,
+      ptoWeeks: data?.ptoWeeks,
+      practiceSetting: data?.practiceSetting,
       production_percentage: data?.prod_per,
       specialty: data?.specialty_raw,
       state: data?.state,
@@ -49,8 +52,8 @@ const SalaryViewer = () => {
       insights_work_life_balance: data?.insight2,
       would_choose_specialty_again  : data?.chooseSpecialty,
       
-      years_of_experience: data?.yearsOfExperience,
-      // compensation_type  :data?,
+      yearsOfExperience: data?.yearsOfExperience,
+      compensation_type  :data?.compensationType,
       // specialty: data.specialty_raw || "", // replace specialty with specialty_raw
     };
 
