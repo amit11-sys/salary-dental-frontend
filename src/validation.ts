@@ -28,9 +28,8 @@ export const salarySchema = z.object({
 
 export const salaryViewerSchema = z.object({
   specialty: z.string().min(1, { message: "Please select a specialty" }),
-  sub_speciality: z
-    .string()
-    .min(1, { message: "Please select a sub specialty" }),
+  sub_speciality: z.optional(z
+    .string()),
   specialty_raw: z.string().min(1, { message: "Please select a specialty" }),
   state: z.optional(z.string()),
   practiceSetting: z.optional(z.string()),
