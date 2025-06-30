@@ -9,6 +9,7 @@ import CustomDropdown from "../../components/Dropdown";
 import EmploymentCard from "../../components/cards/EmploymentCard";
 import { ChartComponent } from "../../components/Chart";
 import SpecialityCard from "../../components/cards/SpecialityCard";
+import { Link } from "react-router-dom";
 
 const SalaryExplorer = () => {
   const { request } = useAxios();
@@ -18,7 +19,7 @@ const SalaryExplorer = () => {
     handleSubmit,
     setValue,
     watch,
-    // formState: { errors },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(salaryViewerSchema),
   });
@@ -70,6 +71,8 @@ const SalaryExplorer = () => {
   //   // Simulate default user input
   //   fetchSuggestions("op"); // or any keyword to fetch initial data
   // }, []);
+  console.log(errors);
+  
   const onSubmit = (data: Record<string, any>) => {
     const payload = {
       ...data,
@@ -341,9 +344,9 @@ const SalaryExplorer = () => {
                 <h2 className="text-2xl font-bold text-gray-900">
                   Recent Submissions
                 </h2>
-                <a
+                <Link
                   className="text-blue-600 hover:text-blue-800 font-medium flex items-center"
-                  href="/all-salaries"
+                  to="/all-salaries"
                 >
                   View All Salaries
                   <svg
@@ -357,7 +360,7 @@ const SalaryExplorer = () => {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                </a>
+                </Link>
               </div>
               <div className="hidden md:block overflow-x-auto px-6">
                 <div className="w-full">
