@@ -13,7 +13,7 @@ const Footer = () => {
                   className="text-base text-gray-500 hover:text-gray-900"
                   href="/specialty/general-surgery"
                 >
-                  General Surgery
+                  General Dentist
                 </a>
               </li>
               <li>
@@ -21,7 +21,7 @@ const Footer = () => {
                   className="text-base text-gray-500 hover:text-gray-900"
                   href="/specialty/orthopedic-surgery"
                 >
-                  Orthopedic Surgery
+                  Orthodontics
                 </a>
               </li>
               <li>
@@ -29,7 +29,7 @@ const Footer = () => {
                   className="text-base text-gray-500 hover:text-gray-900"
                   href="/specialty/cardiology"
                 >
-                  Cardiology
+                  Pediatrics
                 </a>
               </li>
             </ul>
