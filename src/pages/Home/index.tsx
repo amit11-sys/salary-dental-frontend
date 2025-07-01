@@ -2,8 +2,68 @@ import { Link } from "react-router-dom";
 import PopularCard from "../../components/cards/PopularCard";
 import TransparencyCard from "../../components/cards/TransparencyCard";
 import Accordion from "../../components/Accordian";
+import { useState } from "react";
 
 const Home = () => {
+  const [showAll, setShowAll] = useState(false);
+
+  const cards = [
+    {
+      title: "General Dentists",
+      link: "/salaries?speciality=general-dentists",
+    },
+    {
+      title: "Orthodontics and Dentofacial Orthopedics",
+      link: "/salaries?speciality=orthodontics-and-dentofacial-orthopedics",
+    },
+    {
+      title: "Pediatric Dentistry",
+      link: "/salaries?speciality=pediatric-dentistry",
+    },
+    {
+      title: "Endodontics",
+      link: "/salaries?speciality=endodontics",
+    },
+    {
+      title: "Periodontics",
+      link: "/salaries?speciality=periodontics",
+    },
+    {
+      title: "Prosthodontics",
+      link: "/salaries?speciality=prosthodontics",
+    },
+    {
+      title: "Oral and Maxillofacial Pathology",
+      link: "/salaries?speciality=oral-and-maxillofacial-pathology",
+    },
+    {
+      title: "Oral and Maxillofacial Radiology",
+      link: "/salaries?speciality=oral-and-maxillofacial-radiology",
+    },
+    {
+      title: "Oral and Maxillofacial Surgery",
+      link: "/salaries?speciality=oral-and-maxillofacial-surgery",
+    },
+    {
+      title: "Dental Anesthesiology",
+      link: "/salaries?speciality=dental-anesthesiology",
+    },
+    {
+      title: "Oral Medicine",
+      link: "/salaries?speciality=oral-medicine",
+    },
+    {
+      title: "Public Health Dentist",
+      link: "/salaries?speciality=public-health-dentist",
+    },
+    {
+      title: "Resident Dentists",
+      link: "/salaries?speciality=resident-dentists",
+    },
+  ];
+
+  const visibleCards = showAll ? cards : cards.slice(0, 6);
+
   return (
     <>
       <div className="container mx-auto md:px-4 md:py-8">
@@ -14,7 +74,8 @@ const Home = () => {
             </h1>
             <div className="flex flex-col gap-4 p-6 text-gray-700">
               <h2 className="flex flex-wrap items-center justify-center text-2xl m-0">
-                Join 2,474+ verified doctors sharing anonymous salary data.
+                Join a fast growing community of verified dentists sharing
+                anonymous salary data.
               </h2>
               <h2>Search by specialty, state, or experience level.</h2>
             </div>
@@ -36,7 +97,7 @@ const Home = () => {
                 height="48"
                 className="mx-auto mb-4"
               />
-              <p className="text-blue-600 font-semibold text-4xl mb-2">2477</p>
+              <p className="text-blue-600 font-semibold text-4xl mb-2">Daily</p>
               <p className="text-xl text-gray-700">Verified Submissions</p>
             </div>
             <div className="bg-white p-8 rounded-md text-center">
@@ -46,7 +107,7 @@ const Home = () => {
                 height="48"
                 className="mx-auto mb-4"
               />
-              <p className="text-blue-600 font-semibold text-4xl mb-2">30 +</p>
+              <p className="text-blue-600 font-semibold text-4xl mb-2">12</p>
               <p className="text-xl text-gray-700">Specialties</p>
             </div>
             <div className="bg-white p-8 rounded-md text-center">
@@ -57,9 +118,9 @@ const Home = () => {
                 className="mx-auto mb-4"
               />
               <p className="text-blue-600 font-semibold text-4xl mb-2">
-                6.5 K +
+                Fast-Growing
               </p>
-              <p className="text-xl text-gray-700">Members</p>
+              <p className="text-xl text-gray-700">Community</p>
             </div>
           </div>
         </section>
@@ -67,41 +128,31 @@ const Home = () => {
         <section>
           <div className="max-w-[1024px] mx-auto mb-16">
             <h2 className="text-3xl mb-8 font-bold text-center">
-              Top-Paying Medical Specialties in 2025
+              View Data for Dental Practitioners in 2025
             </h2>
             <div className="bg-white p-6">
               <h2 className="text-2xl mb-4 text-gray-900 font-bold mt-0">
-                Popular Specialties
+                Top Dental Professions
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {/* <div className="bg-gradient-to-r from-blue-50 to-white">
-            <p className="font-medium text-blue-900">Cardiology</p>
-            <p className="text-sm text-blue-600">View Salaries →</p>
-          </div> */}
-                <PopularCard
-                  title="Oral and Maxillofacial Surgery"
-                  link="/salaries?speciality=oral-and-maxillofacial-surgery "
-                />
-                <PopularCard
-                  title="Orthodontics and Dentofacial Orthopedics"
-                  link="/salaries?speciality=orthodontics-and-dentofacial-orthopedics "
-                />
-                <PopularCard
-                  title="Pediatric Dentistry"
-                  link="/salaries?speciality=pediatric-dentistry "
-                />
-                <PopularCard
-                  title="Endodontics"
-                  link="/salaries?speciality=endodontics "
-                />
-                <PopularCard
-                  title="Periodontics"
-                  link="/salaries?speciality=periodontics "
-                />
-                <PopularCard
-                  title="Prosthodontics"
-                  link="/salaries?speciality=prosthodontics "
-                />
+              <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {visibleCards.map((card, index) => (
+                    <PopularCard
+                      key={index}
+                      title={card.title}
+                      link={card.link}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex justify-end mt-4">
+                  <button
+                    onClick={() => setShowAll(!showAll)}
+                    className="text-blue-600 font-medium hover:underline"
+                  >
+                    {showAll ? "Show Less" : "Show More"}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -124,7 +175,7 @@ const Home = () => {
               </p>
             </div> */}
             <TransparencyCard
-              number="$250K+"
+              number="$300K+"
               title="Average Medical School Debt"
               des=" With rising education costs, salary transparency helps
                 physicians make informed decisions about their financial future
@@ -132,13 +183,13 @@ const Home = () => {
             />
 
             <TransparencyCard
-              number="25%"
+              number="22%"
               title="Gender Pay Gap"
               des="Transparency helps identify and address pay disparities, ensuring fair compensation regardless of gender or background."
             />
 
             <TransparencyCard
-              number="85%"
+              number="77%"
               title="Career Satisfaction"
               des="Physicians who feel fairly compensated report higher job satisfaction and better work-life balance."
             />
@@ -228,7 +279,7 @@ const Home = () => {
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
                     href="/specialty/orthopedic-surgery"
                   >
-                    Orthopedic Surgery Salary Guide
+                    Orthodontics Salary Guide
                   </a>
                 </div>
                 <div className="flex items-center">
@@ -249,7 +300,7 @@ const Home = () => {
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
                     href="/specialty/cardiology"
                   >
-                    Cardiology Salary Guide
+                    Pediatrics Salary Guide
                   </a>
                 </div>
               </div>
@@ -277,7 +328,7 @@ const Home = () => {
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
                     href="/specialty/orthopedic-surgery/california"
                   >
-                    Orthopedic Surgery Salaries in California
+                    Orthodontics Salaries in New York
                   </a>
                 </div>
                 <div className="flex items-center">
@@ -298,7 +349,7 @@ const Home = () => {
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
                     href="/specialty/general-surgery/massachusetts"
                   >
-                    General Surgery Salaries in Massachusetts
+                    General Dentistry Salaries in Massachusetts
                   </a>
                 </div>
                 <div className="flex items-center">
@@ -319,7 +370,7 @@ const Home = () => {
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
                     href="/specialty/cardiology/texas"
                   >
-                    Cardiology Salaries in Texas
+                    Pediatrics Salaries in Florida
                   </a>
                 </div>
               </div>

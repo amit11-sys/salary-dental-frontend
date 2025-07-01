@@ -6,7 +6,7 @@ type AccordionProps = {
 };
 
 function Accordion({ heading, des }: AccordionProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden">
