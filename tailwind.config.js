@@ -11,10 +11,9 @@ module.exports = {
   			auto: 'auto'
   		},
   		fontFamily: {
-  			sans: [
-  				'Poppins',
-  				'sans-serif'
-  			]
+  			 montserrat: ['Montserrat', 'Arial', 'sans-serif'],
+			 Lato: ['Lato', "Arial", "sans-serif"]
+
   		},
   		transitionProperty: {
   			transform: 'transform',

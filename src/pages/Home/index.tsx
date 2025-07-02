@@ -68,22 +68,32 @@ const Home = () => {
     <>
       <div className="container mx-auto md:px-4 md:py-8">
         <section>
-          <div className="text-center">
-            <h1 className="bg-gradient-to-r from-blue-700 to-purple-900 bg-clip-text text-transparent will-change-transform [contain:layout_paint_style] px-2 leading-tight text-[4.5rem]">
+          <div className="text-center flex flex-col  h-[70vh]">
+            <h1 className=" text-black w-[70%] mx-auto bg-clip-text text-transparent will-change-transform [contain:layout_paint_style] px-2  text-[2.6rem]">
               Compare Real Dentists Salaries Across All Specialties
             </h1>
-            <div className="flex flex-col gap-4 p-6 text-gray-700">
-              <h2 className="flex flex-wrap items-center justify-center text-2xl m-0">
+            <div className="flex justify-center flex-col gap-4 p-0 text-gray-700">
+              <h2 className="flex flex-wrap text-[1.2rem] items-center justify-center text-2xl m-0">
                 Join a fast growing community of verified dentists sharing
                 anonymous salary data.
               </h2>
-              <h2>Search by specialty, state, or experience level.</h2>
+              <h2 className=" text-[1rem] w-[70%] mx-auto mt-0">Search by specialty, state, or experience level.Discover What your peers are earning and contribute to a transparent dental profession</h2>
             </div>
-            <div className="flex flex-row items-center justify-center gap-4">
-              <button className="bg-green-500 btn">
-                Compare Doctor Salaries
+            <div className="flex flex-row items-center justify-center mt-4 gap-4">
+              
+               
+                <Link to="/salaries">
+                <button className="bg-[#00BFAE]  btn">
+
+                 Compare Dentist Salaries
+                </button>
+                </Link>
+             
+              <Link to="/submit-salary">
+              <button className=" bg-[#4F8FF9] btn">Submit Your Salary
               </button>
-              <button className="bg-blue-500 btn">Submit Your Salary</button>
+              </Link>
+              
             </div>
           </div>
         </section>
@@ -221,10 +231,13 @@ const Home = () => {
               reality
             </p>
             <Link
-              to=""
-              className="inline-block bg-[#31C48D] hover:bg-[#2BA97A] text-white font-semibold px-8 py-3 rounded-full transition-colors"
+              to="/salaries"
+              className="inline-block bg-[#31C48D] hover:bg-[#2BA97A] text-white font-semibold   rounded-full transition-colors"
             >
+              <button className="btn">
+
               Share Your Salary
+              </button>
             </Link>
           </div>
         </section>
@@ -277,7 +290,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/orthopedic-surgery"
+                    href="/specialty/Orthodontics-surgery"
                   >
                     Orthodontics Salary Guide
                   </a>
@@ -298,7 +311,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/cardiology"
+                    href="/specialty/Pediatrics-salary"
                   >
                     Pediatrics Salary Guide
                   </a>
@@ -326,7 +339,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/orthopedic-surgery/california"
+                    href="/specialty/Orthodontics-salaries-in-New-York"
                   >
                     Orthodontics Salaries in New York
                   </a>
@@ -347,7 +360,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/general-surgery/massachusetts"
+                    href="/specialty/General-Dentistry-Salaries-in-Massachusetts"
                   >
                     General Dentistry Salaries in Massachusetts
                   </a>
@@ -368,7 +381,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/cardiology/texas"
+                    href="/specialty/Pediatrics-Salaries-in-Florida"
                   >
                     Pediatrics Salaries in Florida
                   </a>
@@ -379,7 +392,7 @@ const Home = () => {
         </section>
 
         <h2 className="text-3xl font-bold text-[#2D2D5F] text-center mb-8">
-          Common Questions About Physician Pay
+          Common Questions About Dentists Pay
         </h2>
         <section className="py-16 bg-[#F8FAFF]">
           <div className="max-w-4xl mx-auto px-4">

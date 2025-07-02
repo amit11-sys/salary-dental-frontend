@@ -14,7 +14,7 @@ import Thankyou from "./pages/ThankYou/page";
 function App() {
   const location = useLocation();
   return (
-    <div className="font-sans bg-gradient-to-r from-blue-50 to-white">
+    <div className="bg-gradient-to-r from-blue-50 to-white">
       <div>
         {location.pathname === "/login" ||
           (location.pathname === "/register" ? <></> : <Header />)}

@@ -1,17 +1,18 @@
 
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap'); */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 body {
   margin: 0 auto;
+  font-family: 'Lato', Arial, sans-serif;
 }
 
 @layer base {
   h1 {
-    @apply text-[2em] font-bold my-[0.67em];
+    @apply text-[2em] font-bold my-[0.67em] font-montserrat;
   }
   h2 {
     @apply text-[1.5em] my-[0.75em];
@@ -39,5 +40,5 @@ body {
 } */
 
 .btn{
-  @apply py-4 px-8 text-white rounded-full w-auto max-w-[360px]
+  @apply py-4 px-8 text-white rounded-full w-auto max-w-[360px] font-montserrat;
 }

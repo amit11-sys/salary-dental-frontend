@@ -12,35 +12,40 @@ const Header = () => {
   return (
     <header className="bg-gradient-to-r from-blue-50 to-white p-4 sm:p-6">
       <div className="container relative mx-auto flex justify-between items-center">
+        <div className="">
+
         <Link
-          className="text-[2.5rem] sm:text-[3.5rem] tracking-normal font-['Outfit']"
+          className="text-[2.5rem] flex items-center gap-2 sm:text-[3.5rem] tracking-normal font-['Outfit']"
           to="/"
         >
-          <span className="text-[#4169E1] font-[400]">Salary</span>
-          <span className="text-[#E94E4A] font-[500]">Dental</span>
+          <span className="text-[#4F8FF9] font-montserrat font-[400]">Salary</span>
+          <span className="text-[#00BFAE] font-montserrat font-[500]">Dental</span>
+        <img className="w-1h-16 h-16" src="/images/home/salarylogo.webp" alt="salarylogo" />
         </Link>
+        </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex gap-4 lg:gap-8 items-center">
           <Link
-            className="text-lg lg:text-xl font-semibold text-[#2D3748] whitespace-nowrap hover:text-blue-600 transition-colors"
+            className="text-lg lg:text-xl font-Lato font-semibold text-[#2D3748] whitespace-nowrap hover:text-blue-600 transition-colors"
             to="/salaries"
           >
             Salary Explorer
           </Link>
 
           <Link
-            className="text-lg lg:text-xl font-semibold text-[#2D3748] whitespace-nowrap hover:text-blue-600 transition-colors"
+            className="text-lg lg:text-xl  font-Lato font-semibold text-[#2D3748] whitespace-nowrap hover:text-blue-600 transition-colors"
             to="/benchmark-residency-salaries-2025"
           >
             Salary Benchmark
           </Link>
 
           <Link
-            className="text-lg lg:text-xl font-semibold px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full hover:from-blue-700 hover:to-blue-800 transition-all transform hover:scale-105 shadow-lg"
+            className="text-lg lg:text-xl font-semibold   bg-gradient-to-r from-[#4F8FF9] to-[#00BFAE] text-white rounded-full hover:from-[#00BFAE] hover:to-[#4F8FF9] transition-all transform hover:scale-105 shadow-lg"
             to="/submit-salary"
           >
-            Add a Salary
+            <button className="btn">Add a Salary</button>
+           
           </Link>
         </div>
 
@@ -89,7 +94,7 @@ const Header = () => {
             </Link>
 
             <Link
-              className="text-lg font-semibold px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700"
+              className="text-lg font-semibold px-4 py-2 from-[#4F8FF9] to-[#00BFAE] text-white rounded-full hover:bg-blue-700"
               to="/submit-salary"
               onClick={handleOpenMenu}
             >
