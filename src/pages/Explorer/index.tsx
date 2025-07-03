@@ -31,6 +31,18 @@ const SalaryExplorer = () => {
   const [practiceData, setPracticeData] = useState([]);
   const [overallSummary, setOverallSummary] = useState<any>([]);
   const [topSpecialitites, setTopSpecialitites] = useState([]);
+  const [selectedSpecialty, setSelectedSpecialty] = useState("");
+  const [totalRecords, setTotalRecords] = useState(0);
+  const [avgHourlyRate, setAvgHourlyRate] = useState<number | null>(null);
+  const [showData, setShowData] = useState(false);
+const [percentiles, setPercentiles] = useState<{
+  p10: number;
+  p25: number;
+  p50: number;
+  p75: number;
+  p90: number;
+} | null>(null); // or `undefined`
+
   const handleSuggestionClick = () => {
     setSuggestions([]);
   };
@@ -90,11 +102,15 @@ const SalaryExplorer = () => {
       method: "GET",
     })
       .then((res: any) => {
-        // console.log("Salary fetched:", res);
+        console.log("Salary fetched:", res);
         setSalaryData(res?.data?.data);
         setPracticeData(res?.data?.summary);
         setOverallSummary(res?.data?.overallSummary);
         setTopSpecialitites(res?.data?.topSatisfactionSpecialties);
+        setPercentiles(res?.data?.percentile);
+        setAvgHourlyRate(res?.data?.avgHourlyRate);
+        setTotalRecords(res?.data?.totalParsed);
+        setShowData(true);
       })
       .catch(() => {
         toast.error("Error occurred while fetching salary", {
@@ -171,20 +187,20 @@ const SalaryExplorer = () => {
                         {suggestions.map((item: any) => (
                           <li
                             key={item?._id}
-                            onClick={() => {
-                              handleSuggestionClick();
-                              setValue(
-                                "specialty",
-                                item?.speciality && item?.sub_specialty
-                                  ? `${item.speciality} - ${item.sub_specialty}`
-                                  : item?.speciality || ""
-                              );
-                              setValue(
-                                "sub_speciality",
-                                item?.sub_specialty || ""
-                              );
-                              setValue("specialty_raw", item?.speciality || "");
-                            }}
+                           onClick={() => {
+  const displayValue =
+    item?.speciality && item?.sub_specialty
+      ? `${item.speciality} - ${item.sub_specialty}`
+      : item?.speciality || "";
+
+  setValue("specialty", displayValue); // updates input
+  setValue("sub_speciality", item?.sub_specialty || "");
+  setValue("specialty_raw", item?.speciality || "");
+
+  setSelectedSpecialty(displayValue); // ✅ only set when user selects
+  handleSuggestionClick(); // optional
+}}
+
                             className="p-2 hover:bg-gray-100 cursor-pointer"
                             role="option"
                           >
@@ -270,26 +286,26 @@ const SalaryExplorer = () => {
             for salary insights and career tips.
           </p>
         </div>
-
+{showData && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
             <div className=" bg-white shadow-md rounded-lg p-6">
               <div className="mb-4">
                 <h2 className="text-2xl font-bold text-gray-900">
-                  Orthopedic Surgery Salary in All Regions
+                  {selectedSpecialty} in All Regions
                 </h2>
                 <div className="flex flex-col">
                   <div className="flex items-baseline gap-2">
                     <span className="text-5xl font-bold text-gray-900">
-                      $394/hr
+                      ${avgHourlyRate}/hr
                     </span>
                     <span className="text-gray-600">
-                      Avg Total Comp (69 Salaries)
+                      Avg Total Comp ({totalRecords} Salaries)
                     </span>
                   </div>
-                  <div className="text-gray-500 mt-1">Updated 5/16/2025</div>
+                  {/* <div className="text-gray-500 mt-1">Updated 5/16/2025</div> */}
                 </div>
-                <ChartComponent />
+                <ChartComponent percentiles={percentiles} />
               </div>
             </div>
             <div className="">
@@ -1150,7 +1166,7 @@ const SalaryExplorer = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>)}
       </div>
     </main>
   );
