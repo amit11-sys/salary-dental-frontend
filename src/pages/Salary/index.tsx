@@ -28,10 +28,10 @@ const SalaryViewer = () => {
   const formValues = getValues();
   const [step, setStep] = useState(1);
   const progressPercent = (step / totalSteps) * 100;
-  console.log(errors);
+  // console.log(errors);
 
   const onSubmit = (data: any) => {
-    console.log(data);
+    // console.log(data);
     // return
     
     const url = `${import.meta.env.VITE_BASE_URL}salary/submit-salary`;

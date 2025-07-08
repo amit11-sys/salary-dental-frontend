@@ -21,10 +21,10 @@ const useAxios = () => {
     try {
       const response = await axios(url, options);
       // console.log(response, "res");
-      if (response?.data?.message === "Login successful" || response?.data?.message === "Quotation Fetched") {
-      } else {
-        toast.success(response?.data?.message)
-      }
+      // if (response?.data?.message === "Login successful" || response?.data?.message === "Quotation Fetched") {
+      // } else {
+      //   toast.success(response?.data?.message)
+      // }
       return response;
     } catch (error) {
       // console.log(error, "erro");
