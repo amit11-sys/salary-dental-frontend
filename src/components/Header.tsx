@@ -40,6 +40,13 @@ const Header = () => {
             Salary Benchmark
           </Link>
 
+           <Link
+            className="text-lg lg:text-xl  font-Lato font-semibold text-[#2D3748] whitespace-nowrap hover:text-blue-600 transition-colors"
+            to="/feedback"
+          >
+            Feedback
+          </Link>
+
           <Link
             className="text-lg lg:text-xl font-semibold   bg-gradient-to-r from-[#4F8FF9] to-[#00BFAE] text-white rounded-full hover:from-[#00BFAE] hover:to-[#4F8FF9] transition-all transform hover:scale-105 shadow-lg"
             to="/submit-salary"
