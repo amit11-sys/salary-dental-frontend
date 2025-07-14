@@ -44,6 +44,16 @@ export const salaryBenchmarkSchema = z.object({
   // state: z.optional(z.string()),
   practiceSetting: z.optional(z.string()),
 });
+export const compaireSalarySchema = z.object({
+  totalCompensation: z.string().min(1, "Total compensation is required"),
+  yearsOfExperience: z
+    .union([z.string(), z.number()])
+    .optional()
+    .transform((val) => (val === "" ? undefined : Number(val))),
+  specialty: z.string().optional(),
+  practiceSetting: z.string().optional(),
+  state:z.string().optional()
+});
 
 export const filterSalarySchema = z.object({
   specialty: z.string().min(1, { message: "Please select a specialty" }),

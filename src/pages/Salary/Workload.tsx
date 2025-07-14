@@ -27,6 +27,7 @@ const Workload = ({
   // const handleRatingClick = (value: number) => {
   //   setValue("rating", value, { shouldValidate: true });
   // };
+  // console.log(formValues)
   return (
     <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
       <div className="p-4 md:p-5">

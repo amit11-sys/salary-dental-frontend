@@ -7,7 +7,7 @@ import { useForm, useWatch } from "react-hook-form";
 import { salaryBenchmarkSchema } from "../../validation";
 import { practiceOptions } from "../../lib/constant";
 import { colors } from "../../constant";
-
+import { Link } from "react-router-dom";
 
 const BenchmarkDetails = () => {
   const { request } = useAxios();
@@ -27,7 +27,6 @@ const BenchmarkDetails = () => {
   const debounceRef = useRef<NodeJS.Timeout | null>(null);
   const formValues = useWatch({ control });
   const onSubmit = () => {
-
     const payload = {
       ...(formValues?.speciality !== undefined && {
         specialty: formValues?.speciality,
@@ -97,9 +96,9 @@ const BenchmarkDetails = () => {
         });
       });
   };
-  const removeItem = (id: string) => {
+  const removeItem = (indexToRemove: number) => {
     setSelectedItems((prev: any) =>
-      prev.filter((item: any) => item._id !== id)
+      prev.filter((_: any, index: number) => index !== indexToRemove)
     );
   };
   const handleCheckboxChange = (item: any) => {
@@ -113,7 +112,7 @@ const BenchmarkDetails = () => {
     });
   };
   // console.log(selectedItems);
-
+  console.log(selectedItems);
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <header className="mb-10">
@@ -427,10 +426,11 @@ const BenchmarkDetails = () => {
                     Comparison Metric
                   </th>
                   {selectedItems.map((item: any, index: number) => {
+                    console.log(item);
                     const bgColor = colors[index % colors?.length];
                     return (
                       <th
-                        key={item._id}
+                        key={index}
                         className={`px-6 py-3 text-left text-xs font-medium uppercase tracking-wider border-b ${bgColor}`}
                         style={{ minWidth: "150px" }}
                       >
@@ -438,7 +438,7 @@ const BenchmarkDetails = () => {
                           <button
                             className="text-gray-400 hover:text-red-500 mr-2"
                             title="Remove from comparison"
-                            onClick={() => removeItem(item?._id)}
+                            onClick={() => removeItem(index)}
                             aria-label={`Remove ${item?.specialty} from comparison`}
                           >
                             <svg
@@ -834,73 +834,74 @@ const BenchmarkDetails = () => {
           </div>
         </div>
         <div className="mt-6 flex justify-center">
-          <a
-            href="/salaries"
+          <Link
+            to="/salaries"
             className="inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded-md shadow hover:bg-indigo-700 transition-colors text-base"
           >
             🔎 Explore More Detailed Salary Data in the Salary Explorer
-          </a>
+          </Link>
         </div>
       </div>
       <section className="mb-16 bg-gray-50 rounded-lg p-6">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Popular Medical Specialty Salaries
         </h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <a
+          <Link
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/EmergencyMedicine"
+            to="/specialty/EmergencyMedicine"
           >
             Emergency Medicine Physician Salary
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/FamilyMedicine"
+            to="/specialty/FamilyMedicine"
           >
             Family Medicine Physician Salary
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/InternalMedicine"
+            to="/specialty/InternalMedicine"
           >
             Internal Medicine Physician Salary
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/Cardiology"
+            to="/specialty/Cardiology"
           >
             Cardiology Physician Salary
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/OrthopedicSurgery"
+            to="/specialty/OrthopedicSurgery"
           >
             Orthopedic Surgeon Salary
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/anesthesiology"
+            to="/specialty/anesthesiology"
           >
             Anesthesiology Physician Salary
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/pediatrics"
+            to="/specialty/pediatrics"
           >
             Pediatrics Physician Salary
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/psychiatry"
+            to="/specialty/psychiatry"
           >
             Psychiatry Physician Salary
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-indigo-600 hover:text-indigo-800"
-            href="/specialty/neurology"
+            to="/specialty/neurology"
           >
             Neurology Physician Salary
-          </a>
+          </Link>
         </div>
       </section>
       <section
@@ -1036,12 +1037,12 @@ const BenchmarkDetails = () => {
           our benchmark data.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
-          <a
-            href="/submit-salary"
+          <Link
+            to="/submit-salary"
             className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Submit Your Salary
-          </a>
+          </Link>
         </div>
       </section>
     </div>

@@ -14,6 +14,7 @@ import Privacy from "./pages/Privacy";
 import TermsPolicies from "./pages/Terms";
 import Contact from "./pages/Contact";
 import Feedback from "./pages/Feedback";
+import SalaryComparison from "./pages/Salary/SalaryComparison";
 
 function App() {
   const location = useLocation();
@@ -38,6 +39,7 @@ function App() {
           <Route path="/specialty/:slug" element={<SpecialityExplorer />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/feedback" element={<Feedback />} />
+          <Route path="/salary-comparison" element={<SalaryComparison />} />
           <Route
             path="/benchmark-residency-salaries-2025"
             element={<BenchmarkDetails />}

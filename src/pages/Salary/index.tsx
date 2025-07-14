@@ -28,7 +28,8 @@ const SalaryViewer = () => {
   const formValues = getValues();
   const [step, setStep] = useState(1);
   const progressPercent = (step / totalSteps) * 100;
-  // console.log(errors);
+  console.log(errors);
+// console.log(formValues)
 
   const onSubmit = (data: any) => {
     // console.log(data);
@@ -51,14 +52,13 @@ const SalaryViewer = () => {
       insights_improvement: data?.insight1,
       insights_work_life_balance: data?.insight2,
       would_choose_specialty_again  : data?.chooseSpecialty,
-      
       yearsOfExperience: data?.yearsOfExperience,
       compensation_type  :data?.compensationType,
       // specialty: data.specialty_raw || "", // replace specialty with specialty_raw
     };
 
     // delete payload.specialty_raw;
-
+    // console.log(payload)
     request(url, {
       method: "POST",
       headers: {
