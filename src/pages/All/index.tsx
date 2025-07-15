@@ -1,11 +1,12 @@
 import { toast } from "react-toastify";
 import useAxios from "../../hooks/useAxios";
 import { useEffect, useRef, useState } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm, useWatch,Controller    } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { filterSalarySchema } from "../../validation";
 import { debounce, practiceOptions } from "../../lib/constant";
 import CustomDropdown from "../../components/Dropdown";
+import NewCustomDropdown from '../../components/newCustomDropdown'
 
 const AllSalary = () => {
   const { request } = useAxios();
@@ -145,7 +146,16 @@ const AllSalary = () => {
       value: "1",
     },
   ];
-
+  const onReset = () => {
+    reset(); // reset form values
+    setSalary([]);
+    setValue("practiceSetting", "");
+    setCurrPage("");
+    setTotalRecords(0);
+    setTotalPages(0);
+    setPage(1); // reset to first page
+    setSuggestions([]); // clear specialty suggestions
+  };
   return (
     <main className="container mx-auto md:px-4 md:py-8">
       <div className="bg-white rounded-lg shadow-lg p-6">
@@ -212,17 +222,24 @@ const AllSalary = () => {
                 )}
               </div>
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Practice Type
-              </label>
-              <CustomDropdown
-                setValue={setValue}
-                options={practiceOptions}
-                placeholder={"Select Practice"}
-                fieldName="practiceSetting"
-              />
-            </div>
+          <div>
+  <label className="block text-sm font-medium text-gray-700 mb-1">
+    Practice Type
+  </label>
+  <Controller
+    control={control}
+    name="practiceSetting"
+    render={({ field: { onChange, value } }) => (
+      <NewCustomDropdown
+        setValue={(fieldName: string, val: any) => onChange(val)}
+        options={practiceOptions}
+        placeholder={"Select Practice"}
+        fieldName="practiceSetting"
+        value={value}
+      />
+    )}
+  />
+</div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Years of Experience
@@ -289,17 +306,34 @@ const AllSalary = () => {
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Satisfaction Score
               </label>
-              <CustomDropdown
+              {/* <CustomDropdown
                 setValue={setValue}
                 options={satisfactionOptions}
                 placeholder="Select Satisfaction Score"
                 fieldName="satisfaction"
-              />
+              /> */}
+               <Controller
+    control={control}
+    name="satisfaction"
+    render={({ field: { onChange, value } }) => (
+      <NewCustomDropdown
+        setValue={(fieldName: string, val: any) => onChange(val)}
+        options={satisfactionOptions}
+        placeholder={"Select Satisfaction Score"}
+        fieldName="satisfaction"
+        value={value}
+      />
+    )}
+  />
+              
             </div>
           </form>
         </div>
         <div className="flex justify-end mb-6">
-          <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-colors flex items-center gap-2" onClick={() => reset()}>
+          <button
+            className="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-colors flex items-center gap-2"
+            onClick={() => onReset()}
+          >
             <svg
               className="w-5 h-5"
               fill="none"

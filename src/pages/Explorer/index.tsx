@@ -102,7 +102,7 @@ const [percentiles, setPercentiles] = useState<{
       method: "GET",
     })
       .then((res: any) => {
-        console.log("Salary fetched:", res);
+        console.log("Salary fetched:", res?.data);
         setSalaryData(res?.data?.data);
         setPracticeData(res?.data?.summary);
         setOverallSummary(res?.data?.overallSummary);

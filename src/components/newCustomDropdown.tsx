@@ -1,18 +1,20 @@
+
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-//   SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
 
-function CustomDropdown({ setValue, options, placeholder, fieldName }: any) {
-  
+function NewCustomDropdown({ setValue, options, placeholder, fieldName, value }: any) {
   return (
     <div>
-      <Select onValueChange={(value) => setValue(fieldName, value)}>
+      <Select
+        onValueChange={(val) => setValue(fieldName, val)}
+        value={value || ""}  // Ensure controlled component even when value is undefined/null
+      >
         <SelectTrigger className="w-full p-4 border-2 rounded-xl text-base transition-all duration-200 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 border-gray-200 hover:border-gray-300">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
@@ -30,7 +32,5 @@ function CustomDropdown({ setValue, options, placeholder, fieldName }: any) {
   );
 }
 
-
-export default CustomDropdown;
-
+export default NewCustomDropdown;
 
