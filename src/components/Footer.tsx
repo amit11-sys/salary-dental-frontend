@@ -13,7 +13,7 @@ const Footer = () => {
               <li>
                 <a
                   className="text-base text-gray-500 hover:text-gray-900"
-                  href="/specialty/general-surgery"
+                  href="/specialty/general-dentist"
                 >
                   General Dentist
                 </a>
@@ -21,7 +21,7 @@ const Footer = () => {
               <li>
                 <a
                   className="text-base text-gray-500 hover:text-gray-900"
-                  href="/specialty/orthopedic-surgery"
+                  href="/specialty/orthodontics"
                 >
                   Orthodontics
                 </a>
@@ -29,7 +29,7 @@ const Footer = () => {
               <li>
                 <a
                   className="text-base text-gray-500 hover:text-gray-900"
-                  href="/specialty/cardiology"
+                  href="/specialty/pediatrics"
                 >
                   Pediatrics
                 </a>
@@ -49,14 +49,14 @@ const Footer = () => {
                   Salary Comparison Tool
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a
                   className="text-base text-gray-500 hover:text-gray-900"
                   href="/calculator"
                 >
                   Take Home Calculator
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div>

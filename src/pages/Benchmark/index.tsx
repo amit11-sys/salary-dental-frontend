@@ -112,18 +112,18 @@ const BenchmarkDetails = () => {
     });
   };
   // console.log(selectedItems);
-  console.log(selectedItems);
+  // console.log(selectedItems);
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <header className="mb-10">
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 mb-3">
-          2025 Physician &amp; Residency Salary Benchmarks
+          2025 Dental &amp; Residency Salary Benchmarks
         </h1>
         <div className="max-w-3xl mb-8">
           <p className="text-lg text-gray-600 mb-4">
-            Compare real-world physician and residency compensation data across
+            Compare real-world dental and residency compensation data across
             specialties for 2025. Our interactive benchmark tool features data
-            submitted directly by physicians across the United States.
+            submitted directly by dental across the United States.
           </p>
           <p className="text-gray-600 mb-4">
             Each entry includes <strong>average and median salaries</strong>,{" "}
@@ -852,25 +852,25 @@ const BenchmarkDetails = () => {
             className="text-indigo-600 hover:text-indigo-800"
             to="/specialty/EmergencyMedicine"
           >
-            Emergency Medicine Physician Salary
+            Emergency Medicine Dental Salary
           </Link>
           <Link
             className="text-indigo-600 hover:text-indigo-800"
             to="/specialty/FamilyMedicine"
           >
-            Family Medicine Physician Salary
+            Family Medicine Dental Salary
           </Link>
           <Link
             className="text-indigo-600 hover:text-indigo-800"
             to="/specialty/InternalMedicine"
           >
-            Internal Medicine Physician Salary
+            Internal Medicine Dental Salary
           </Link>
           <Link
             className="text-indigo-600 hover:text-indigo-800"
             to="/specialty/Cardiology"
           >
-            Cardiology Physician Salary
+            Cardiology Dental Salary
           </Link>
           <Link
             className="text-indigo-600 hover:text-indigo-800"
@@ -882,25 +882,25 @@ const BenchmarkDetails = () => {
             className="text-indigo-600 hover:text-indigo-800"
             to="/specialty/anesthesiology"
           >
-            Anesthesiology Physician Salary
+            Anesthesiology Dental Salary
           </Link>
           <Link
             className="text-indigo-600 hover:text-indigo-800"
             to="/specialty/pediatrics"
           >
-            Pediatrics Physician Salary
+            Pediatrics Dental Salary
           </Link>
           <Link
             className="text-indigo-600 hover:text-indigo-800"
             to="/specialty/psychiatry"
           >
-            Psychiatry Physician Salary
+            Psychiatry Dental Salary
           </Link>
           <Link
             className="text-indigo-600 hover:text-indigo-800"
             to="/specialty/neurology"
           >
-            Neurology Physician Salary
+            Neurology Dental Salary
           </Link>
         </div>
       </section>
@@ -913,16 +913,16 @@ const BenchmarkDetails = () => {
           id="faq-heading"
           className="text-2xl font-semibold text-gray-800 mb-6"
         >
-          Frequently Asked Questions About Physician Salaries
+          Frequently Asked Questions About Dental Salaries
         </h2>
         <div className="space-y-6">
           <div className="border-b border-gray-200 pb-4 mb-4 last:border-b-0 last:pb-0 last:mb-0">
             <h3 className="text-lg font-medium text-gray-900 mb-2">
-              What's the average physician salary in 2025?
+              What's the average dental salary in 2025?
             </h3>
             <div className="text-base text-gray-600">
               <p>
-                Based on our data, the national average physician salary across
+                Based on our data, the national average dental salary across
                 all specialties in 2025 varies significantly by specialty,
                 practice type, and experience level. Surgical specialties tend
                 to offer higher compensation, with neurosurgery and orthopedics
@@ -936,11 +936,11 @@ const BenchmarkDetails = () => {
             </h3>
             <div className="text-base text-gray-600">
               <p>
-                Satisfaction scores are based on anonymous physician ratings on
+                Satisfaction scores are based on anonymous dental ratings on
                 a scale of 1-5, where 5 represents the highest satisfaction.
                 These scores incorporate multiple factors including work-life
                 balance, administrative burden, compensation fairness, practice
-                autonomy, and whether physicians would choose the same specialty
+                autonomy, and whether dental would choose the same specialty
                 again.
               </p>
             </div>
@@ -981,7 +981,7 @@ const BenchmarkDetails = () => {
             </h3>
             <div className="text-base text-gray-600">
               <p>
-                The benchmark data is updated weekly based on ongoing physician
+                The benchmark data is updated weekly based on ongoing dental
                 submissions. The "Last Updated" date shown for each specialty
                 indicates when that particular data point was last revised. We
                 continuously collect new submissions to ensure our data remains
@@ -1008,10 +1008,10 @@ const BenchmarkDetails = () => {
       </section>
       <section className="bg-gray-50 rounded-lg p-6 mb-16">
         <h2 className="text-xl font-semibold text-gray-800 mb-3">
-          2025 Physician Salary Trends
+          2025 Dental Salary Trends
         </h2>
         <p className="text-sm text-gray-600 leading-relaxed mb-4">
-          In 2025, the physician compensation landscape continues to evolve with
+          In 2025, the dental compensation landscape continues to evolve with
           notable trends. Surgical specialties like orthopedics and neurosurgery
           command the highest salaries, while primary care specialties often
           report higher satisfaction scores despite lower compensation. Practice
@@ -1022,7 +1022,7 @@ const BenchmarkDetails = () => {
           Satisfaction scores correlate strongly with autonomy and work-life
           balance rather than just compensation. Our comprehensive benchmark
           table reflects anonymized, verified submissions from practicing
-          physicians across the United States, providing a reliable resource for
+          dental across the United States, providing a reliable resource for
           career planning and compensation negotiations.
         </p>
       </section>
@@ -1032,7 +1032,7 @@ const BenchmarkDetails = () => {
         </h2>
         <p className="text-gray-600 mb-6">
           Our salary benchmark data is only as strong as the community that
-          contributes to it. Help your fellow physicians by anonymously sharing
+          contributes to it. Help your fellow dental by anonymously sharing
           your compensation details. Each submission improves the accuracy of
           our benchmark data.
         </p>

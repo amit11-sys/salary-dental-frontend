@@ -5,7 +5,6 @@ import { useForm, useWatch,Controller    } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { filterSalarySchema } from "../../validation";
 import { debounce, practiceOptions } from "../../lib/constant";
-import CustomDropdown from "../../components/Dropdown";
 import NewCustomDropdown from '../../components/newCustomDropdown'
 
 const AllSalary = () => {
@@ -231,7 +230,7 @@ const AllSalary = () => {
     name="practiceSetting"
     render={({ field: { onChange, value } }) => (
       <NewCustomDropdown
-        setValue={(fieldName: string, val: any) => onChange(val)}
+        setValue={( val: any) => onChange(val)}
         options={practiceOptions}
         placeholder={"Select Practice"}
         fieldName="practiceSetting"
@@ -317,7 +316,7 @@ const AllSalary = () => {
     name="satisfaction"
     render={({ field: { onChange, value } }) => (
       <NewCustomDropdown
-        setValue={(fieldName: string, val: any) => onChange(val)}
+        setValue={(val: any) => onChange(val)}
         options={satisfactionOptions}
         placeholder={"Select Satisfaction Score"}
         fieldName="satisfaction"

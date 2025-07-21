@@ -77,7 +77,7 @@ const Home = () => {
                 Join a fast growing community of verified dentists sharing
                 anonymous salary data.
               </h2>
-              <h2 className=" text-[1rem] w-[70%] mx-auto mt-0">Search by specialty, state, or experience level.Discover What your peers are earning and contribute to a transparent dental profession</h2>
+              <h2 className=" text-[1rem] w-[70%] mx-auto mt-0">Search by specialty, state, or experience level. Discover what your peers are earning and contributing to a transparent dental profession.</h2>
             </div>
             <div className="flex flex-row items-center justify-center mt-4 gap-4">
               
@@ -170,7 +170,7 @@ const Home = () => {
 
         <section>
           <h2 className="text-3xl md:text-4xl font-bold text-[#2D2D5F] text-center mb-12">
-            Why Physician Salary Transparency Matters
+            Why Dental Salary Transparency Matters
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  max-w-[1024px] mx-auto gap-6">
             {/* <div className="bg-white rounded-xl p-6 shadow-sm">
@@ -180,15 +180,15 @@ const Home = () => {
               </h3>
               <p className="text-gray-600 leading-relaxed">
                 With rising education costs, salary transparency helps
-                physicians make informed decisions about their financial future
+                dentist make informed decisions about their financial future
                 and career path.
               </p>
             </div> */}
             <TransparencyCard
               number="$300K+"
-              title="Average Medical School Debt"
+              title="Average Dental School Debt"
               des=" With rising education costs, salary transparency helps
-                physicians make informed decisions about their financial future
+                dentist make informed decisions about their financial future
                 and career path."
             />
 
@@ -201,13 +201,13 @@ const Home = () => {
             <TransparencyCard
               number="77%"
               title="Career Satisfaction"
-              des="Physicians who feel fairly compensated report higher job satisfaction and better work-life balance."
+              des="Dentists who feel fairly compensated report higher job satisfaction and better work-life balance."
             />
 
             <TransparencyCard
               number="40%"
               title="Negotiation Success Rate"
-              des="Access to market data increases successful salary negotiations and helps physicians advocate for fair compensation."
+              des="Access to market data increases successful salary negotiations and helps dentist advocate for fair compensation."
             />
 
             <TransparencyCard
@@ -219,7 +219,7 @@ const Home = () => {
             <TransparencyCard
               number="3x"
               title="Salary Variation"
-              des="Compensation can vary significantly between practice settings. Transparency helps physicians find the right fit."
+              des="Compensation can vary significantly between practice settings. Transparency helps dentist find the right fit."
             />
           </div>
         </section>
@@ -227,7 +227,7 @@ const Home = () => {
         <section>
           <div className="mt-12 text-center mb-16">
             <p className="text-xl text-gray-700 mb-6">
-              Join thousands of physicians who are making salary transparency a
+              Join thousands of dentist who are making salary transparency a
               reality
             </p>
             <Link
@@ -245,7 +245,7 @@ const Home = () => {
         <section className="mb-8">
           {/* Vertical Line */}
           <h2 className="text-3xl font-bold text-[#2D2D5F] text-center mb-12">
-            Explore Physician Salaries by Specialty and Location
+            Explore Dentist Salaries by Specialty and Location
           </h2>
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="bg-white rounded-xl p-6 md:p-8 shadow-sm">
@@ -271,7 +271,7 @@ const Home = () => {
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
                     href="/specialty/general-surgery"
                   >
-                    General Surgery Salary Guide
+                    General Dentist Salary Guide
                   </a>
                 </div>
                 <div className="flex items-center">
@@ -402,12 +402,12 @@ const Home = () => {
 
             <div className="space-y-4">
               <Accordion
-                heading="Why is salary transparency so important for doctors?"
-                des="Salary transparency is crucial for physicians because it helps level the playing field in contract negotiations and ensures fair compensation across different practice settings. With the rising costs of medical education and increasing administrative burdens, doctors need reliable salary data to make informed career decisions and advocate for equitable compensation that reflects their expertise, training, and dedication to patient care."
+                heading="Why is salary transparency so important for dentists?"
+                des="Salary transparency is crucial for dentist because it helps level the playing field in contract negotiations and ensures fair compensation across different practice settings. With the rising costs of medical education and increasing administrative burdens, doctors need reliable salary data to make informed career decisions and advocate for equitable compensation that reflects their expertise, training, and dedication to patient care."
               />
               <Accordion
                 heading="How is this salary data collected?"
-                des="Our salary data is collected through anonymous submissions from verified physicians across the United States. Each submission is reviewed for accuracy and completeness before being added to our database."
+                des="Our salary data is collected through anonymous submissions from verified dentist across the United States. Each submission is reviewed for accuracy and completeness before being added to our database."
               />
               <Accordion
                 heading="Is my salary information kept confidential?"
@@ -424,14 +424,14 @@ const Home = () => {
               />
               <Accordion
                 heading="Want to get in touch?"
-                des="You can reach us at"
+                des="You can reach us at info@salarydental.com"
               />
             </div>
           </div>
         </section>
 
         {/* <section>
-        <div className="space-y-4"><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">Why is salary transparency so important for doctors?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">Salary transparency is crucial for physicians because it helps level the playing field in contract negotiations and ensures fair compensation across different practice settings. With the rising costs of medical education and increasing administrative burdens, doctors need reliable salary data to make informed career decisions and advocate for equitable compensation that reflects their expertise, training, and dedication to patient care.</div></div></div><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">How is this salary data collected?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">Our salary data is collected through anonymous submissions from verified physicians across the United States. Each submission is reviewed for accuracy and completeness before being added to our database.</div></div></div><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">Is my salary information kept confidential?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">Yes, all salary submissions are completely anonymous. We never collect or store any personally identifiable information with salary submissions.</div></div></div><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">How often is the data updated?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">Our salary database is updated in real-time as new submissions are received and verified. The statistics and averages are recalculated daily.</div></div></div><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">How can I use this data in contract negotiations?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">Our detailed salary breakdowns by specialty, location, and practice type can serve as valuable benchmarks during contract negotiations. Use the percentile data to understand your market value and negotiate fair compensation.</div></div></div><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">Want to get in touch?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">You can reach us at <a href="mailto:tyler@salarydr.com" className="text-blue-600 hover:text-blue-800 hover:underline">tyler@salarydr.com</a> </div></div></div></div>
+        <div className="space-y-4"><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">Why is salary transparency so important for doctors?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">Salary transparency is crucial for dentist because it helps level the playing field in contract negotiations and ensures fair compensation across different practice settings. With the rising costs of medical education and increasing administrative burdens, doctors need reliable salary data to make informed career decisions and advocate for equitable compensation that reflects their expertise, training, and dedication to patient care.</div></div></div><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">How is this salary data collected?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">Our salary data is collected through anonymous submissions from verified dentist across the United States. Each submission is reviewed for accuracy and completeness before being added to our database.</div></div></div><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">Is my salary information kept confidential?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">Yes, all salary submissions are completely anonymous. We never collect or store any personally identifiable information with salary submissions.</div></div></div><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">How often is the data updated?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">Our salary database is updated in real-time as new submissions are received and verified. The statistics and averages are recalculated daily.</div></div></div><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">How can I use this data in contract negotiations?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">Our detailed salary breakdowns by specialty, location, and practice type can serve as valuable benchmarks during contract negotiations. Use the percentile data to understand your market value and negotiate fair compensation.</div></div></div><div className="bg-white rounded-xl shadow-sm mb-4 overflow-hidden"><button className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"><h3 className="text-lg font-semibold text-[#2E2B6E]">Want to get in touch?</h3><svg className="w-6 h-6 transform transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button><div className="transition-all duration-300 ease-in-out overflow-hidden max-h-0"><div className="px-6 pb-5 text-gray-600">You can reach us at <a href="mailto:tyler@salarydr.com" className="text-blue-600 hover:text-blue-800 hover:underline">tyler@salarydr.com</a> </div></div></div></div>
         </section> */}
 
         {/* <section>
