@@ -9,8 +9,10 @@ import CustomDropdown from "../../components/Dropdown";
 import EmploymentCard from "../../components/cards/EmploymentCard";
 import { ChartComponent } from "../../components/Chart";
 import SpecialityCard from "../../components/cards/SpecialityCard";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Select from "react-select";
+import { useSuggestions } from "../../context/SuggestionContext";
+import { unslugify } from "../../constant";
 const SalaryExplorer = () => {
   const { request } = useAxios();
 
@@ -20,13 +22,21 @@ const SalaryExplorer = () => {
     setValue,
     watch,
     control,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(salaryViewerSchema),
   });
+  function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+
+const query = useQuery();
+const paramSpecialty = query.get('speciality'); 
   const specialty = watch("specialty");
   const stateInput = watch("state");
-  const [suggestions, setSuggestions] = useState<any>([]);
+  // const [suggestions, setSuggestions] = useState<any>([]);
+  const { suggestions } = useSuggestions();
   const [filteredStates, setFilteredStates] = useState<typeof usStates>([]);
   const [salaryData, setSalaryData] = useState([]);
   const [practiceData, setPracticeData] = useState([]);
@@ -47,13 +57,50 @@ const SalaryExplorer = () => {
   // const handleSuggestionClick = () => {
   //   setSuggestions([]);
   // };
-  console.log(errors);
+  console.log(suggestions, errors, paramSpecialty);
 
-  useEffect(() => {
-    // if (watchSpecialty && watchSpecialty.length > 1) {
-    fetchSuggestions();
-    //   }
-  }, []);
+
+
+useEffect(() => {
+  if (paramSpecialty && suggestions.length > 0) {
+    console.log(unslugify("orthodontics-and-dentofacial-orthopedics"), paramSpecialty);
+    
+const matchedSpecialty = suggestions.find((opt: any) => {
+  console.log(opt);
+  
+  // const labelSlug = unslugify(opt.label);
+  // console.log(`Checking: "${opt.label}" → unslugify → "${labelSlug}" vs paramSpecialty → "${paramSpecialty}"`);
+  return opt.label === unslugify(paramSpecialty);
+});
+
+console.log("Matched Specialty:", matchedSpecialty);
+
+console.log(matchedSpecialty, 'matched');
+
+    if (matchedSpecialty) {
+      console.log("Matched specialty:", matchedSpecialty?.raw);
+      setValue("specialty", matchedSpecialty?.value);
+   setTimeout(() => {
+      const currentValues = getValues();
+      onSubmit(currentValues);
+    }, 0);
+    }
+  }
+}, [paramSpecialty, suggestions, setValue]);
+  // useEffect(() => {
+  //   // Simulate default user input
+  //   if (suggestions.length > 0) {
+  //     const item = suggestions[0];
+  //     setValue(
+  //       "specialty",
+  //       item?.speciality && item?.sub_specialty
+  //         ? `${item.speciality} - ${item.sub_specialty}`
+  //         : item?.speciality || ""
+  //     );
+  //     setValue("sub_specialty", item?.sub_specialty || "");
+  //     setValue("specialty_raw", item?.speciality || "");
+  //   }
+  // }, [suggestions, setValue]);
   useEffect(() => {
     if (!stateInput) {
       setFilteredStates([]);
@@ -65,38 +112,12 @@ const SalaryExplorer = () => {
     );
     setFilteredStates(results);
   }, [stateInput]);
-  const fetchSuggestions = () => {
-    // setLoading(true);
-    const url = `${import.meta.env.VITE_BASE_URL}speciality/all`;
-    request(url, {
-      method: "GET",
-    })
-      .then((res: any) => {
-        const options = res.data.map((item: any) => ({
-          value: `${item?.speciality} - ${item?.sub_specialty || ""}`,
-          label: `${item?.speciality}${
-            item?.sub_specialty ? ` - ${item.sub_specialty}` : ""
-          }`,
-          raw: item,
-        }));
-        setSuggestions(options);
-      })
-      .catch(() => {
-        toast.error("Error occurred while getting specialities", {
-          autoClose: 3000,
-        });
-      });
-  };
-  // useEffect(() => {
-  //   // Simulate default user input
-  //   fetchSuggestions("op"); // or any keyword to fetch initial data
-  // }, []);
-  // console.log(suggestions, errors);
+console.log(specialty, "specialty");
 
   const onSubmit = (data: Record<string, any>) => {
     const payload = {
       ...data,
-      specialty: data.specialty_raw || "",
+      specialty: data.specialty_raw || unslugify(paramSpecialty),
       ...(data.practiceSetting !== undefined && {
         practice: data.practiceSetting,
       }),
@@ -186,14 +207,7 @@ const SalaryExplorer = () => {
                         }
                         onChange={(selected) => {
                           field.onChange(selected?.value || "");
-                          setValue(
-                            "sub_speciality",
-                            selected?.raw?.sub_specialty || ""
-                          );
-                          setValue(
-                            "specialty_raw",
-                            selected?.raw?.speciality || ""
-                          );
+                          setValue("specialy", selected?.speciality || "");
                         }}
                         isClearable
                         styles={{
