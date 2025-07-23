@@ -10,7 +10,7 @@ const Home = () => {
   const cards = [
     {
       title: "General Dentists",
-      link: "/salaries?speciality=general-dentists",
+      link: "/salaries?speciality=general-dentist",
     },
     {
       title: "Orthodontics and Dentofacial Orthopedics",
@@ -269,7 +269,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/general-surgery"
+                    href="/specialty/general-dentist"
                   >
                     General Dentist Salary Guide
                   </a>
@@ -290,7 +290,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/Orthodontics-surgery"
+                    href="/specialty/orthodontics-and-dentofacial-orthopedics"
                   >
                     Orthodontics Salary Guide
                   </a>
@@ -311,7 +311,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/Pediatrics-salary"
+                    href="/specialty/pediatric-dentistry"
                   >
                     Pediatrics Salary Guide
                   </a>
@@ -339,7 +339,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/Orthodontics-salaries-in-New-York"
+                    href="/specialty/orthodontics-and-dentofacial-orthopedics"
                   >
                     Orthodontics Salaries in New York
                   </a>
@@ -360,7 +360,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/General-Dentistry-Salaries-in-Massachusetts"
+                    href="/specialty/general-dentist"
                   >
                     General Dentistry Salaries in Massachusetts
                   </a>
@@ -381,7 +381,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/Pediatrics-Salaries-in-Florida"
+                    href="/specialty/pediatric-dentistry"
                   >
                     Pediatrics Salaries in Florida
                   </a>

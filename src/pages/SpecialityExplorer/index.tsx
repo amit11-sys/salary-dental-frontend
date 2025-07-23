@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import StarRating from "../../components/StarRating";
 import StateCard from "../../components/cards/StateCard";
+import { unslugify } from "../../constant";
 
 const SpecialityExplorer = () => {
   const { request } = useAxios();
@@ -70,32 +71,32 @@ const SpecialityExplorer = () => {
   console.log(stats);
   // console.log(downStats);
 
-function insertSpaceBeforeSecondCapital(str: string | undefined): string | undefined {
-  if (!str) return;
+// function unslugify(str: string | undefined): string | undefined {
+//   if (!str) return;
 
-  // Capitalize first letter if not
-  str = str.charAt(0).toUpperCase() + str.slice(1);
+//   // Capitalize first letter if not
+//   str = str.charAt(0).toUpperCase() + str.slice(1);
 
-  // Insert space before second capital letter
-  let match = str.match(/[A-Z]/g);
-  if (!match || match.length < 2) return str;
+//   // Insert space before second capital letter
+//   let match = str.match(/[A-Z]/g);
+//   if (!match || match.length < 2) return str;
 
-  let count = 0;
-  return str.replace(/[A-Z]/g, (char) => {
-    count++;
-    if (count === 2) {
-      return " " + char;
-    }
-    return char;
-  });
-}
+//   let count = 0;
+//   return str.replace(/[A-Z]/g, (char) => {
+//     count++;
+//     if (count === 2) {
+//       return " " + char;
+//     }
+//     return char;
+//   });
+// }
 
 console.log(stats, downStats);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 className="text-4xl font-bold text-gray-900 mb-8">
-        {insertSpaceBeforeSecondCapital(slug)} Salary Data
+        {unslugify(slug)} Salary Data
       </h1>
       {downStats?.reportsByPractice?.length > 0 ? (
         <>
@@ -179,12 +180,12 @@ console.log(stats, downStats);
 
           <div className="prose max-w-none mb-12 bg-white rounded-xl p-8">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              How much does an {insertSpaceBeforeSecondCapital(slug)} make?
+              How much does an {unslugify(slug)} make?
             </h2>
             <div className="space-y-6 text-gray-600">
               <div className="flex items-center gap-4">
                 <p className="text-lg">
-                  As of May 27, 2025, an {insertSpaceBeforeSecondCapital(slug)}{" "}
+                  As of May 27, 2025, an {unslugify(slug)}{" "}
                   in the United States earns an average of $410,000 per year
                   ($34,167 monthly). Based on an average 36-hour work week, this
                   translates to approximately $222 per hour.
@@ -203,10 +204,10 @@ console.log(stats, downStats);
               </h3>
               <p className="text-lg">
                 Based on {stats?.totalSubmissions} verified physician salary
-                submissions, SalaryDr is seeing total compensation ranging from
+                submissions, SalaryDental is seeing total compensation ranging from
                 $375,000 to $440,000, with top performers (90th percentile)
                 earning up to 700,000 annually. The majority of{" "}
-                {insertSpaceBeforeSecondCapital(slug)} salaries fall between
+                {unslugify(slug)} salaries fall between
                 $375,000 (25th percentile) and $440,000 (75th percentile).
               </p>
               <h3 className="text-xl font-semibold text-gray-900 mt-8">
@@ -232,7 +233,7 @@ console.log(stats, downStats);
                 Job Satisfaction and Work-Life Balance
               </h3>
               <p className="text-lg">
-                {insertSpaceBeforeSecondCapital(slug)} physicians report high
+                {unslugify(slug)} physicians report high
                 career satisfaction, rating their specialty 3.6 out of 5, with
                 89% saying they would choose this specialty again.{" "}
               </p>
@@ -260,7 +261,7 @@ console.log(stats, downStats);
                   </span>
                 </div>
                 <p className="mt-2 text-sm text-gray-600">
-                  Percentage of {insertSpaceBeforeSecondCapital(slug)}{" "}
+                  Percentage of {unslugify(slug)}{" "}
                   physicians who would choose this specialty again if starting
                   their career over.
                 </p>
@@ -321,7 +322,7 @@ console.log(stats, downStats);
                 </div>
                 <p className="text-sm text-gray-600">
                   Average satisfaction rating reported by{" "}
-                  {insertSpaceBeforeSecondCapital(slug)}
+                  {unslugify(slug)}
                   physicians (1-5 scale).
                 </p>
               </div>
@@ -538,7 +539,7 @@ console.log(stats, downStats);
 
           <div className="bg-white rounded-xl p-8 mb-12">
             <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-              {insertSpaceBeforeSecondCapital(slug)} Salary by State
+              {unslugify(slug)} Salary by State
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {Array.isArray(downStats?.reportsByState) &&

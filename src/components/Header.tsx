@@ -1,13 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
+import useAxios from "../hooks/useAxios";
+import { useSuggestions } from "../context/SuggestionContext";
 
 const Header = () => {
+  const {request} = useAxios();
+  const {setSuggestions} = useSuggestions();
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   function handleOpenMenu() {
     setIsOpenMenu(!isOpenMenu);
   }
+
+  useEffect(() => {
+   fetchSuggestions();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchSuggestions = () => {
+    // setLoading(true);
+    const url = `${import.meta.env.VITE_BASE_URL}speciality/all`;
+    request(url, {
+      method: "GET",
+    })
+      .then((res: any) => {
+        const options = res.data.map((item: any) => ({
+          value: `${item?.speciality} - ${item?.sub_specialty || ""}`,
+          label: `${item?.speciality}${
+            item?.sub_specialty ? ` - ${item.sub_specialty}` : ""
+          }`,
+          raw: item,
+        }));
+        setSuggestions(options);
+      });
+  };
 
   return (
     <header className="bg-gradient-to-r from-blue-50 to-white p-4 sm:p-6">

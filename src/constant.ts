@@ -1,5 +1,3 @@
-
-
 export const matchValueToLabel = (options: any, valueToMatch: any) => {
   console.log(options, valueToMatch);
 
@@ -16,3 +14,21 @@ export const colors = [
   "bg-green-100",
   "bg-yellow-100",
 ];
+
+export const slugify = (text: string) => {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "");
+};
+
+export const unslugify = (text: any) => {
+  return text
+    .split("-")
+    .map((word:any) =>
+      word.toLowerCase() === "and"
+        ? "and"
+        : word.charAt(0).toUpperCase() + word.slice(1)
+    )
+    .join(" ");
+};
