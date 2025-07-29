@@ -9,101 +9,101 @@ const Footer = () => {
             <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
               Specialties
             </h3>
-            <ul className="mt-4 space-y-4">
-              <li>
-                <a
+            <div className="mt-4 flex flex-col space-y-4">
+            
+                <Link
                   className="text-base text-gray-500 hover:text-gray-900"
-                  href="/specialty/general-dentist"
+                  to="/specialty/general-dentist"
                 >
                   General Dentist
-                </a>
-              </li>
-              <li>
-                <a
+                </Link>
+              
+            
+                <Link
                   className="text-base text-gray-500 hover:text-gray-900"
-                  href="/specialty/orthodontics"
+                  to="/specialty/orthodontics-and-dentofacial-orthopedics"
                 >
                   Orthodontics
-                </a>
-              </li>
-              <li>
-                <a
+                </Link>
+              
+            
+                <Link
                   className="text-base text-gray-500 hover:text-gray-900"
-                  href="/specialty/pediatrics"
+                  to="/specialty/pediatric-dentistry"
                 >
                   Pediatrics
-                </a>
-              </li>
-            </ul>
+                </Link>
+              
+            </div>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
               Tools
             </h3>
-            <ul className="mt-4 space-y-4">
-              <li>
-                <a
+            <div className="mt-4 space-y-4">
+            
+                <Link
                   className="text-base text-gray-500 hover:text-gray-900"
-                  href="/salary-comparison"
+                  to="/salary-comparison"
                 >
                   Salary Comparison Tool
-                </a>
-              </li>
+                </Link>
+              
               {/* <li>
-                <a
+                <Link
                   className="text-base text-gray-500 hover:text-gray-900"
-                  href="/calculator"
+                  to="/calculator"
                 >
                   Take Home Calculator
-                </a>
-              </li> */}
-            </ul>
+                </Link>
+               */}
+            </div>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
               Legal
             </h3>
-            <ul className="mt-4 space-y-4">
-              <li>
+            <div className=" flex flex-col mt-4 space-y-4">
+            
                 <Link
                   className="text-base text-gray-500 hover:text-gray-900"
                   to="/privacy"
                 >
                   Privacy Policy
                 </Link>
-              </li>
-              <li>
+              
+            
                 <Link
                   className="text-base text-gray-500 hover:text-gray-900"
                   to="/terms"
                 >
                   Terms of Service
                 </Link>
-              </li>
-            </ul>
+              
+            </div>
           </div>
           <div>
             <h3 className="text-sm font-semibold text-gray-600 tracking-wider uppercase">
               Company
             </h3>
-            <ul className="mt-4 space-y-4">
-              <li>
+            <div className=" flex flex-col mt-4 space-y-4">
+            
                 <Link
                   className="text-base text-gray-500 hover:text-gray-900"
                   to="/contact"
                 >
                   Contact
                 </Link>
-              </li>
-              <li>
+              
+            
                 <Link
                   className="text-base text-gray-500 hover:text-gray-900"
                   to="/feedback"
                 >
                   Feedback
                 </Link>
-              </li>
-            </ul>
+              
+            </div>
           </div>
         </div>
         <div className="mt-8 border-t border-gray-200 pt-8">

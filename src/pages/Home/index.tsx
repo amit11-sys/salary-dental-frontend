@@ -53,7 +53,7 @@ const Home = () => {
       link: "/salaries?speciality=oral-medicine",
     },
     {
-      title: "Public Health Dentist",
+      title: "Dental Public Health",
       link: "/salaries?speciality=public-health-dentist",
     },
     {
@@ -339,7 +339,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/orthodontics-and-dentofacial-orthopedics"
+                    href="/specialty/orthodontics-and-dentofacial-orthopedics?state=new-york"
                   >
                     Orthodontics Salaries in New York
                   </a>
@@ -360,7 +360,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/general-dentist"
+                    href="/specialty/general-dentist?state=massachusetts"
                   >
                     General Dentistry Salaries in Massachusetts
                   </a>
@@ -381,7 +381,7 @@ const Home = () => {
                   </svg>
                   <a
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/pediatric-dentistry"
+                    href="/specialty/pediatric-dentistry?state=florida"
                   >
                     Pediatrics Salaries in Florida
                   </a>

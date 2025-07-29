@@ -124,7 +124,7 @@ const BasicDetails = ({
           </div>
           <div>
             <label className="block text-sm font-semibold text-gray-900 mb-2">
-              Medical Specialty <span className="text-red-500">*</span>
+              Dental Specialty <span className="text-red-500">*</span>
             </label>
             <div className="relative">
               <input
@@ -221,7 +221,7 @@ const BasicDetails = ({
               </div>
 
               <input
-                min="1"
+                min="0"
                 max="40"
                 value={years}
                 className="w-full h-3 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-200"
@@ -240,7 +240,7 @@ const BasicDetails = ({
               />
 
               <div className="flex justify-between text-xs text-gray-600 mt-2 px-1">
-                <span className="font-medium">1 year</span>
+                <span className="font-medium">0 year</span>
                 <span className="font-medium">40+ years</span>
               </div>
             </div>

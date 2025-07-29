@@ -842,7 +842,7 @@ const BenchmarkDetails = () => {
           </Link>
         </div>
       </div>
-      <section className="mb-16 bg-gray-50 rounded-lg p-6">
+      {/* <section className="mb-16 bg-gray-50 rounded-lg p-6">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">
           Popular Medical Specialty Salaries
         </h2>
@@ -903,7 +903,94 @@ const BenchmarkDetails = () => {
             Neurology Dental Salary
           </Link>
         </div>
+      </section> */}
+      <section className="mb-16 bg-gray-50 rounded-lg p-6">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">
+          Popular Dental Specialty Salaries
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=general-dentist"
+          >
+            General Dentists
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=orthodontics-and-dentofacial-orthopedics"
+          >
+            Orthodontics and Dentofacial Orthopedics
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=pediatric-dentistry"
+          >
+            Pediatric Dentistry
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=endodontics"
+          >
+            Endodontics
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=periodontics"
+          >
+            Periodontics
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=prosthodontics"
+          >
+            Prosthodontics
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=oral-and-maxillofacial-pathology"
+          >
+            Oral and Maxillofacial Pathology
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=oral-and-maxillofacial-radiology"
+          >
+            Oral and Maxillofacial Radiology
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=oral-and-maxillofacial-surgery"
+          >
+            Oral and Maxillofacial Surgery
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=dental-anesthesiology"
+          >
+            Dental Anesthesiology
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=oral-medicine"
+          >
+            Oral Medicine
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=Public-Health-Dentist"
+          >
+            Public Health Dentist{" "}
+          </Link>
+          <Link
+            className="text-indigo-600 hover:text-indigo-800"
+            to="/salaries?speciality=resident-dentists"
+          >
+            Resident Dentists
+          </Link>
+        </div>
       </section>
+
       <section
         className="mb-16 bg-white rounded-lg p-8 shadow-sm border border-gray-100"
         id="faq"
@@ -922,11 +1009,11 @@ const BenchmarkDetails = () => {
             </h3>
             <div className="text-base text-gray-600">
               <p>
-                Based on our data, the national average dental salary across
-                all specialties in 2025 varies significantly by specialty,
-                practice type, and experience level. Surgical specialties tend
-                to offer higher compensation, with neurosurgery and orthopedics
-                at the top end of the scale.
+                Based on our data, the national average dental salary across all
+                specialties in 2025 varies significantly by specialty, practice
+                type, and experience level. Surgical specialties tend to offer
+                higher compensation, with neurosurgery and orthopedics at the
+                top end of the scale.
               </p>
             </div>
           </div>
@@ -936,12 +1023,11 @@ const BenchmarkDetails = () => {
             </h3>
             <div className="text-base text-gray-600">
               <p>
-                Satisfaction scores are based on anonymous dental ratings on
-                a scale of 1-5, where 5 represents the highest satisfaction.
-                These scores incorporate multiple factors including work-life
-                balance, administrative burden, compensation fairness, practice
-                autonomy, and whether dental would choose the same specialty
-                again.
+                Satisfaction scores are based on anonymous dental ratings on a
+                scale of 1-5, where 5 represents the highest satisfaction. These
+                scores incorporate multiple factors including work-life balance,
+                administrative burden, compensation fairness, practice autonomy,
+                and whether dental would choose the same specialty again.
               </p>
             </div>
           </div>
@@ -1021,9 +1107,9 @@ const BenchmarkDetails = () => {
         <p className="text-sm text-gray-600 leading-relaxed">
           Satisfaction scores correlate strongly with autonomy and work-life
           balance rather than just compensation. Our comprehensive benchmark
-          table reflects anonymized, verified submissions from practicing
-          dental across the United States, providing a reliable resource for
-          career planning and compensation negotiations.
+          table reflects anonymized, verified submissions from practicing dental
+          across the United States, providing a reliable resource for career
+          planning and compensation negotiations.
         </p>
       </section>
       <section className="mt-16 bg-white shadow-sm rounded-lg p-6 border border-gray-100">
@@ -1032,9 +1118,9 @@ const BenchmarkDetails = () => {
         </h2>
         <p className="text-gray-600 mb-6">
           Our salary benchmark data is only as strong as the community that
-          contributes to it. Help your fellow dental by anonymously sharing
-          your compensation details. Each submission improves the accuracy of
-          our benchmark data.
+          contributes to it. Help your fellow dental by anonymously sharing your
+          compensation details. Each submission improves the accuracy of our
+          benchmark data.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
           <Link

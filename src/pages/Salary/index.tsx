@@ -28,13 +28,13 @@ const SalaryViewer = () => {
   const formValues = getValues();
   const [step, setStep] = useState(1);
   const progressPercent = (step / totalSteps) * 100;
-  console.log(errors);
-// console.log(formValues)
+  // console.log(errors);
+  // console.log(formValues)
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     // console.log(data);
     // return
-    
+
     const url = `${import.meta.env.VITE_BASE_URL}salary/submit-salary`;
 
     const payload = {
@@ -51,14 +51,22 @@ const SalaryViewer = () => {
       state: data?.state,
       insights_improvement: data?.insight1,
       insights_work_life_balance: data?.insight2,
-      would_choose_specialty_again  : data?.chooseSpecialty,
+      would_choose_specialty_again: data?.chooseSpecialty,
       yearsOfExperience: data?.yearsOfExperience,
-      compensation_type  :data?.compensationType,
+      compensation_type: data?.compensationType,
+      email:data?.email
       // specialty: data.specialty_raw || "", // replace specialty with specialty_raw
     };
 
     // delete payload.specialty_raw;
     // console.log(payload)
+    
+
+   
+
+
+
+
     request(url, {
       method: "POST",
       headers: {
@@ -70,6 +78,7 @@ const SalaryViewer = () => {
         console.log("Salary submitted:", res);
         if (res?.status === 201) {
           toast.success("Details Submitted Successfully");
+
           navigate("/thank-you");
         }
       })
@@ -132,8 +141,12 @@ const SalaryViewer = () => {
                 ></path>
               </svg>
             </div>
+
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+              Join a fast-growing list of dentists
+            </h1>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              Join <span className="text-blue-600">2,622</span> physicians
+              Join <span className="text-blue-600">2,622</span> dentistry
             </h1>
             <p className="text-xl md:text-2xl font-semibold text-blue-700 mb-4 leading-relaxed">
               Help improve salary transparency in medicine 🚀
@@ -173,7 +186,7 @@ const SalaryViewer = () => {
                   >
                     <div className="flex items-center justify-between">
                       <h3 className="text-lg font-bold text-green-900">
-                        Our Mission: Free Data for All Physicians
+                        Our Mission: Free Data for All dentists
                       </h3>
                       <svg
                         className={`w-5 h-5 text-green-700 transition-transform duration-200 ${
@@ -197,12 +210,10 @@ const SalaryViewer = () => {
                     <div>
                       <p className="text-green-800 text-sm leading-relaxed">
                         We're building the largest{" "}
-                        <strong>free and open database</strong> of physician
+                        <strong>free and open database</strong> of dentist
                         compensation. Unlike expensive industry reports, our
                         data will{" "}
-                        <strong>
-                          always be accessible to every physician{" "}
-                        </strong>
+                        <strong>always be accessible to every dentist </strong>
                         at no cost. Your contribution helps level the playing
                         field and empowers all doctors with transparent
                         compensation.
@@ -282,6 +293,7 @@ const SalaryViewer = () => {
                 setStep={setStep}
                 trigger={trigger}
                 errors={errors}
+                watch={watch}
               />
             )}
             {step === 3 && (

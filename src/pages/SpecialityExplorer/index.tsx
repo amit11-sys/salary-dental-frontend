@@ -1,14 +1,20 @@
 import { toast } from "react-toastify";
 import useAxios from "../../hooks/useAxios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import StarRating from "../../components/StarRating";
 import StateCard from "../../components/cards/StateCard";
 import { unslugify } from "../../constant";
 
 const SpecialityExplorer = () => {
   const { request } = useAxios();
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+  
+  const query = useQuery();
   const { slug } = useParams();
+  const state = query.get('state'); 
   const [stats, setStats] = useState<any>([]);
   const [downStats, setDownStats] = useState<any>([]);
   useEffect(() => {
@@ -23,6 +29,7 @@ const SpecialityExplorer = () => {
     if (!slug) return;
     const payload = {
       specialty: slug,
+       ...(state && { state: unslugify(state) }), // Include state if provided
     };
 
     const queryParams = new URLSearchParams(payload)?.toString();
@@ -34,7 +41,7 @@ const SpecialityExplorer = () => {
       method: "GET",
     })
       .then((res: any) => {
-        setStats(res.data[0]);
+        setStats(res?.data[0]);
         // console.log(res);
       })
       .catch(() => {
@@ -48,6 +55,7 @@ const SpecialityExplorer = () => {
     if (!slug) return;
     const payload = {
       specialty: slug,
+       ...(state && { state: unslugify(state) }), // Include state if provided
     };
 
     const queryParams = new URLSearchParams(payload)?.toString();
@@ -59,7 +67,7 @@ const SpecialityExplorer = () => {
       method: "GET",
     })
       .then((res: any) => {
-        setDownStats(res.data);
+        setDownStats(res?.data);
         // console.log(res);
       })
       .catch(() => {
