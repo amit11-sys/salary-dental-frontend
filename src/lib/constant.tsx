@@ -438,22 +438,18 @@ York
 Youngstown`;
 
 export const practiceOptions = [
-  { key: 1, name: "Private Practice (Solo)", value: "Private Practice (Solo)" },
+  { key: 1, name: "Private Practice", value: "Private Practice" },
   {
     key: 2,
-    name: "Private Practice (Group)",
-    value: "Private Practice (Group)",
+    name: "Dental Service Organization",
+    value: "Dental Service Organization",
   },
   {
     key: 3,
-    name: "Dental Service Organization (DSO) / Corporate Dentistry",
-    value: "Dental Service Organization (DSO) / Corporate Dentistry",
+    name: "Community Health Center",
+    value: "Community Health Center",
   },
-  {
-    key: 4,
-    name: "Community Health Center (CHC)",
-    value: "Community Health Center (CHC)",
-  },
+  { key: 4, name: "Hospital Dentistry", value: "Hospital Dentistry" },
   { key: 5, name: "Academic Dentistry", value: "Academic Dentistry" },
   { key: 6, name: "Public Health Dentistry", value: "Public Health Dentistry" },
   { key: 7, name: "Military Dentistry", value: "Military Dentistry" },

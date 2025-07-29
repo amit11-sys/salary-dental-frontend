@@ -46,10 +46,10 @@ const Workload = ({
               <span className="text-red-500">*</span>
             </label>
             <input
-              placeholder="Enter hours per week"
+              placeholder="Enter weeks of PTO"
               className="w-full pl-6 pr-2 py-3 border-2 rounded-xl text-base transition-all duration-200 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 border-gray-200 hover:border-gray-300  "
               type="text"
-              {...register("hoursWorked", { valueAsNumber: true })}
+              {...register("ptoWeeks")}
             />
           </div>
           <div>
@@ -61,10 +61,10 @@ const Workload = ({
               <span className="text-red-500">*</span>
             </label>
             <input
-              placeholder="Enter weeks of PTO"
+              placeholder="Enter hours per week"
               className="w-full pl-6 pr-2 py-3 border-2 rounded-xl text-base transition-all duration-200 focus:ring-4 focus:ring-blue-100 focus:border-blue-500 border-gray-200 hover:border-gray-300"
               type="number"
-              {...register("ptoWeeks", { valueAsNumber: true })}
+              {...register("hoursWorked")}
               //   name="ptoWeeks"
             />
             <p className="text-gray-500 text-sm mt-1">
@@ -192,7 +192,7 @@ const Workload = ({
             <CustomDropdown
               setValue={setValue}
               options={workloadTypes}
-              placeholder={"Select compensation type"}
+              placeholder={"Select an Option"}
               fieldName="chooseSpecialty"
             />
             {errors.chooseSpecialty && (
@@ -259,7 +259,7 @@ const Workload = ({
                     ></path>
                   </svg>
                   <h4 className="font-semibold text-green-900">
-                    💡 What other {formValues?.specialty + " "} physicians are saying:
+                    💡 What other {formValues?.specialty + " "}  are saying:
                   </h4>
                 </div>
                 {/* <div className="space-y-3">
@@ -327,7 +327,7 @@ const Workload = ({
                     Since you're sharing your compensation data, why not help
                     future physicians with your specialty insights too?
                     <strong> These fields are completely optional</strong> but
-                    incredibly valuable to medical students and residents.
+                    incredibly valuable to dental students and residents.
                   </span>
                 </p>
               </div>
@@ -355,7 +355,7 @@ const Workload = ({
                     >
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                     </svg>
-                    Anonymous • Helps future doctors
+                    Anonymous • Helps future dentists
                   </span>
                   {/* <span className="transition-colors ">0/500</span> */}
                 </div>
@@ -385,7 +385,7 @@ const Workload = ({
                     >
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
                     </svg>
-                    Anonymous • Helps future doctors
+                    Anonymous • Helps future dentists
                   </span>
                   {/* <span className="transition-colors ">0/500</span> */}
                 </div>

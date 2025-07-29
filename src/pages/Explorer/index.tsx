@@ -23,7 +23,6 @@ const SalaryExplorer = () => {
     watch,
     control,
     getValues,
-    formState: { errors },
   } = useForm({
     resolver: zodResolver(salaryViewerSchema),
   });
@@ -57,28 +56,29 @@ const paramSpecialty = query.get('speciality');
   // const handleSuggestionClick = () => {
   //   setSuggestions([]);
   // };
-  console.log(suggestions, errors, paramSpecialty);
+  // console.log(suggestions, errors, paramSpecialty);
 
+// console.log(errors, "errors", suggestions);
 
 
 useEffect(() => {
   if (paramSpecialty && suggestions.length > 0) {
-    console.log(unslugify("orthodontics-and-dentofacial-orthopedics"), paramSpecialty);
+    // console.log(unslugify("orthodontics-and-dentofacial-orthopedics"), paramSpecialty);
     
 const matchedSpecialty = suggestions.find((opt: any) => {
-  console.log(opt);
+  // console.log(opt);
   
   // const labelSlug = unslugify(opt.label);
   // console.log(`Checking: "${opt.label}" → unslugify → "${labelSlug}" vs paramSpecialty → "${paramSpecialty}"`);
   return opt.label === unslugify(paramSpecialty);
 });
 
-console.log("Matched Specialty:", matchedSpecialty);
+// console.log("Matched Specialty:", matchedSpecialty);
 
-console.log(matchedSpecialty, 'matched');
+// console.log(matchedSpecialty, 'matched');
 
     if (matchedSpecialty) {
-      console.log("Matched specialty:", matchedSpecialty?.raw);
+      // console.log("Matched specialty:", matchedSpecialty?.raw);
       setValue("specialty", matchedSpecialty?.value);
    setTimeout(() => {
       const currentValues = getValues();
@@ -112,7 +112,7 @@ console.log(matchedSpecialty, 'matched');
     );
     setFilteredStates(results);
   }, [stateInput]);
-console.log(specialty, "specialty");
+// console.log(specialty, "specialty", errors);
 
   const onSubmit = (data: Record<string, any>) => {
     const payload = {
@@ -207,7 +207,8 @@ console.log(specialty, "specialty");
                         }
                         onChange={(selected) => {
                           field.onChange(selected?.value || "");
-                          setValue("specialy", selected?.speciality || "");
+                          setValue("specialy", selected?.label || "");
+                          setValue("specialty_raw", selected?.label || "");
                         }}
                         isClearable
                         styles={{

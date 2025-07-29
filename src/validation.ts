@@ -10,10 +10,44 @@ export const salarySchema = z.object({
     .min(1, "Must have at least 1 year of experience")
     .max(40, "Cannot exceed 40 years of experience"),
   practiceSetting: z.string().min(1, { message: "It is a required field" }),
-  base_salary: z.optional(z.number()),
-  bonus: z.optional(z.number()),
-  hoursWorked: z.number().min(1, { message: "It is a required field" }),
-  ptoWeeks: z.number().min(1, { message: "It is a required field" }),
+base_salary: z
+  .preprocess(
+    (val) => {
+      if (val === "" || val === null || typeof val === "undefined") return undefined;
+      const num = Number(val);
+      return Number.isNaN(num) ? undefined : num;
+    },
+    z.number().optional()
+  ),
+
+bonus: z
+  .preprocess(
+    (val) => {
+      if (val === "" || val === null || typeof val === "undefined") return undefined;
+      const num = Number(val);
+      return Number.isNaN(num) ? undefined : num;
+    },
+    z.number().optional()
+  ),
+
+  hoursWorked: z
+  .preprocess(
+    (val) => {
+      if (val === "" || val === null || typeof val === "undefined") return undefined;
+      const num = Number(val);
+      return Number.isNaN(num) ? undefined : num;
+    },
+    z.number().optional()
+  ),
+  ptoWeeks: z
+  .preprocess(
+    (val) => {
+      if (val === "" || val === null || typeof val === "undefined") return undefined;
+      const num = Number(val);
+      return Number.isNaN(num) ? undefined : num;
+    },
+    z.number().optional()
+  ),
   satisfactionLevel: z.number().min(1, { message: "It is a required field" }),
   compensationType: z.string().min(1, { message: "Required" }),
   chooseSpecialty: z.enum(["yes", "no"], {
@@ -23,7 +57,18 @@ export const salarySchema = z.object({
   specialty_raw: z.string().min(1, { message: "Please select a specialty" }),
   insight1: z.optional(z.string()),
   insight2: z.optional(z.string()),
-  prod_per: z.optional(z.string()),
+prod_per: z
+  .union([
+    z.literal(""), // allow empty string (optional field)
+    z
+      .preprocess(
+        (val) => (val === "" ? undefined : Number(val)),
+        z
+          .number({ invalid_type_error: "Must be a number" })
+          .min(0, { message: "Minimum is 0%" })
+          .max(100, { message: "Maximum is 100%" })
+      ),
+  ])
 });
 
 export const salaryViewerSchema = z.object({

@@ -26,8 +26,8 @@ const Thankyou = () => {
             Thank You for Your Submission!
           </h1>
           <p className="text-gray-600 mb-6">
-            Your contribution helps create transparency in physician
-            compensation and supports the medical community.
+            Your contribution helps create transparency in dental
+            compensation and supports the community.
           </p>
           {/* <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6 mb-8">
             <div className="flex items-start">
