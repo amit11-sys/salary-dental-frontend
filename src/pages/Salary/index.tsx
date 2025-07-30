@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import {  useForm } from "react-hook-form";
 import { salarySchema } from "../../validation";
 import BasicDetails from "./BasicDetails";
 import CompensationDetails from "./CompensationDetails";
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const SalaryViewer = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [salaryCount, setSalaryCount] = useState<number>();
   const totalSteps = 3;
   const {
     register,
@@ -28,6 +29,34 @@ const SalaryViewer = () => {
   const formValues = getValues();
   const [step, setStep] = useState(1);
   const progressPercent = (step / totalSteps) * 100;
+
+  // for fetch salary data from db with api 
+  useEffect(() => {
+    const fetchSalaryCount = async () => {
+      try {
+        const url = `${import.meta.env.VITE_BASE_URL}salary/salary-count`;
+        const response = await request(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response?.status === 200) {
+          
+          setSalaryCount(response?.data?.count || 0);
+        }
+      } catch (error) {
+        console.error("Error fetching salary data:", error);
+      }
+    };
+
+    fetchSalaryCount();
+
+
+
+
+
+  },[])
   // console.log(errors);
   // console.log(formValues)
 
@@ -146,7 +175,7 @@ const SalaryViewer = () => {
               Join a fast-growing list of dentists
             </h1>
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              Join <span className="text-blue-600">2,622</span> dentistry
+              Join <span className="text-blue-600">{salaryCount}</span> dentistry
             </h1>
             <p className="text-xl md:text-2xl font-semibold text-blue-700 mb-4 leading-relaxed">
               Help improve salary transparency in medicine 🚀

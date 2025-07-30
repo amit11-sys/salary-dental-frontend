@@ -267,12 +267,12 @@ const Home = () => {
                       d="M9 5l7 7-7 7"
                     ></path>
                   </svg>
-                  <a
+                  <Link
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/general-dentist"
+                    to="/specialty/general-dentist"
                   >
                     General Dentist Salary Guide
-                  </a>
+                  </Link>
                 </div>
                 <div className="flex items-center">
                   <svg
@@ -288,12 +288,12 @@ const Home = () => {
                       d="M9 5l7 7-7 7"
                     ></path>
                   </svg>
-                  <a
+                  <Link
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/orthodontics-and-dentofacial-orthopedics"
+                    to="/specialty/orthodontics-and-dentofacial-orthopedics"
                   >
                     Orthodontics Salary Guide
-                  </a>
+                  </Link>
                 </div>
                 <div className="flex items-center">
                   <svg
@@ -309,12 +309,12 @@ const Home = () => {
                       d="M9 5l7 7-7 7"
                     ></path>
                   </svg>
-                  <a
+                  <Link
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/pediatric-dentistry"
+                    to="/specialty/pediatric-dentistry"
                   >
                     Pediatrics Salary Guide
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -337,12 +337,12 @@ const Home = () => {
                       d="M9 5l7 7-7 7"
                     ></path>
                   </svg>
-                  <a
+                  <Link
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/orthodontics-and-dentofacial-orthopedics?state=new-york"
+                    to="/specialty/orthodontics-and-dentofacial-orthopedics?state=new-york"
                   >
                     Orthodontics Salaries in New York
-                  </a>
+                  </Link>
                 </div>
                 <div className="flex items-center">
                   <svg
@@ -358,12 +358,12 @@ const Home = () => {
                       d="M9 5l7 7-7 7"
                     ></path>
                   </svg>
-                  <a
+                  <Link
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/general-dentist?state=massachusetts"
+                    to="/specialty/general-dentist?state=massachusetts"
                   >
                     General Dentistry Salaries in Massachusetts
-                  </a>
+                  </Link>
                 </div>
                 <div className="flex items-center">
                   <svg
@@ -379,12 +379,12 @@ const Home = () => {
                       d="M9 5l7 7-7 7"
                     ></path>
                   </svg>
-                  <a
+                  <Link
                     className="text-blue-500 hover:text-blue-700 transition-colors text-lg"
-                    href="/specialty/pediatric-dentistry?state=florida"
+                    to="/specialty/pediatric-dentistry?state=florida"
                   >
                     Pediatrics Salaries in Florida
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
